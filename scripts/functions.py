@@ -34,3 +34,7 @@ def squareness(square_weight, free_neighs, a_eval):
         free_neighs_count.append(free_neighs.count(free_neigh))
     a_weighted_square = np.array(free_neighs_count) ** square_weight
     a_eval *= a_weighted_square
+
+def normalize_excel(excel):
+    excel.iloc[:, 1:] = excel.iloc[:, 1:].div(excel.iloc[:, 1:].sum(axis=1), axis=0)
+    excel.iloc[:, 1:] = excel.iloc[:, 1:].fillna(0)
