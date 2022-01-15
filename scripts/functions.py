@@ -86,3 +86,12 @@ def breath_first_traversal(starting_locs, envelope_lattice):
     # reshape and construct a lattice from the street network distance list
     mn_dist_lattice = mn_dist_lattice_flat.reshape(mn_dist_lattice.shape)
     return mn_dist_lattice
+
+def enabling_loc_in_lattice(locs, envelope_lattice):
+    lattice = envelope_lattice * 0
+    for loc in locs:
+        lattice[tuple(loc)] = 1
+    return lattice
+
+def min_max_scaler(lattice):
+    return (lattice - lattice.min()) / (lattice.max() - lattice.min())
