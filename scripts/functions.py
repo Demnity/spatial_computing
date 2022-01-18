@@ -110,13 +110,13 @@ def create_xy_stencil_with_max_depth(max_depth):
 def array_element_not_in_2d_array(array_to_search, array_2d):
     return np.all(np.sum(array_2d == array_to_search, axis=1) != len(array_to_search))
 
-def index_to_avoid_for_building_depth(a_locs, avail_lattice, max_depth):
-    #get envelope that contains only the current agent's locations
-    free_neighs_lattice = enabling_loc_in_lattice(a_locs, avail_lattice)
-    not_free_neighs_lattice = 1 - free_neighs_lattice
+def index_to_avoid_for_building_depth(agent_lattice, max_depth):
+    #get envelope that contains all but the current agent's locations
+    not_agent_lattice = 1 - agent_lattice
     #create a max depth stencil to know how many neighbours of a voxel are filled
-    result_lattice = free_neighs_lattice.apply_stencil(create_xy_stencil_with_max_depth(max_depth))
-    result_lattice = result_lattice * not_free_neighs_lattice
+    result_lattice = agent_lattice.apply_stencil(create_xy_stencil_with_max_depth(max_depth))
+    #we are concern about only the neighbours of the agents 
+    result_lattice = result_lattice * not_agent_lattice
     #divide by max depth to get the number of axis filled
     result_lattice = result_lattice / max_depth
     #any voxels that have more than 2 axis filled will not be considered as a neighbour(this logic is covered in 'agent growth' notebook)
