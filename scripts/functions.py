@@ -95,3 +95,55 @@ def enabling_loc_in_lattice(locs, envelope_lattice):
 
 def min_max_scaler(lattice):
     return (lattice - lattice.min()) / (lattice.max() - lattice.min())
+
+#Ex: [1,2,3] and [[1,2,3],[3,4,5]]
+# Method returns true since [1,2,3] is in the array
+def array_element_not_in_2d_array(array_to_search, array_2d):
+    return np.all(np.sum(array_2d == array_to_search, axis=1) != len(array_to_search))
+
+########## BUILDING DEPTH AND BUILDING HEIGHT AUXILIARY FUNCTIONS
+
+def create_xy_stencil_with_max_depth(max_depth):
+    stencil = tg.create_stencil("von_neumann", 0, max_depth)
+    for i in range(-max_depth, max_depth + 1):
+        stencil.set_index([i, 0, 0], 1)
+        stencil.set_index([0, i, 0], 1)
+        stencil.function = tg.sfunc.sum
+    stencil.set_index([0,0,0], 0)
+    return stencil
+
+def index_to_avoid_for_building_depth(agent_lattice, max_depth):
+    #get envelope that contains all but the current agent's locations
+    not_agent_lattice = 1 - agent_lattice
+    #create a max depth stencil to know how many neighbours of a voxel are filled
+    result_lattice = agent_lattice.apply_stencil(create_xy_stencil_with_max_depth(max_depth))
+    #we are concern about only the neighbours of the agents 
+    result_lattice = result_lattice * not_agent_lattice
+    #divide by max depth to get the number of axis filled
+    result_lattice = result_lattice / max_depth
+    #any voxels that have more than 2 axis filled will not be considered as a neighbour(this logic is covered in 'agent growth' notebook)
+    index = np.argwhere(result_lattice >= 2.)
+    return index
+
+def create_z_stencil_with_max_height(max_height):
+    stencil = tg.create_stencil("von_neumann", 0, max_height)
+    for i in range(-max_height, max_height + 1):
+        stencil.set_index([0, 0, i], 1)
+        stencil.function = tg.sfunc.sum
+    stencil.set_index([0,0,0], 0)
+    return stencil
+
+def index_to_avoid_for_building_height(agent_lattice, max_height):
+    #get envelope that contains all but the current agent's locations
+    not_agent_lattice = 1 - agent_lattice
+    #create a max height stencil to know how many neighbours of a voxel are filled
+    result_lattice = agent_lattice.apply_stencil(create_z_stencil_with_max_height(max_height))
+    #we are concern about only the neighbours of the agents 
+    result_lattice = result_lattice * not_agent_lattice
+    #divide by max height to get the number of axis filled
+    result_lattice = result_lattice / max_height
+    #any voxels that have more than 1 axis filled will not be considered as a neighbour(this logic is covered in 'agent growth' notebook)
+    index = np.argwhere(result_lattice >= 1.)
+    return index
+
+#################################################################
