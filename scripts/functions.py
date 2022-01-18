@@ -95,3 +95,28 @@ def enabling_loc_in_lattice(locs, envelope_lattice):
 
 def min_max_scaler(lattice):
     return (lattice - lattice.min()) / (lattice.max() - lattice.min())
+
+def create_xy_stencil_with_max_depth(max_depth):
+    stencil = tg.create_stencil("von_neumann", 0, max_depth)
+    stencil.set_index([0,0,0], 0)
+    for i in range(-max_depth, max_depth + 1):
+        stencil.set_index([i, 0, 0], 1)
+        stencil.set_index([0, i, 0], 1)
+        stencil.function = tg.sfunc.sum
+    return stencil
+
+#Ex: [1,2,3] and [[1,2,3],[3,4,5]]
+# Method returns true since [1,2,3] is in the array
+def array_element_not_in_2d_array(array_to_search, array_2d):
+    return np.all(np.sum(array_2d == array_to_search, axis=1) != len(array_to_search))
+
+def index_to_avoid_for_building_depth(a_locs, avail_lattice, max_depth):
+    #get envelope that contains only the current agent's locations
+    free_neighs_lattice = enabling_loc_in_lattice(a_locs, avail_lattice)
+    #create a max depth stencil to know how many neighbours of a voxel are filled
+    result_lattice = free_neighs_lattice.apply_stencil(create_xy_stencil_with_max_depth(max_depth))
+    #divide by max depth to get the number of axis filled
+    result_lattice = result_lattice / max_depth
+    #any voxels that have more than 2 axis filled will not be considered as a neighbour(this logic is covered in 'agent growth' notebook)
+    index = np.argwhere(result_lattice >= 2.)
+    return index
