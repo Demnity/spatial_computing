@@ -129,7 +129,7 @@ def create_z_stencil_with_max_height(max_height):
     stencil = tg.create_stencil("von_neumann", 0, max_height)
     for i in range(-max_height, max_height + 1):
         stencil.set_index([0, 0, i], 1)
-        stencil.function = tg.sfunc.sum
+    stencil.function = tg.sfunc.sum
     stencil.set_index([0,0,0], 0)
     return stencil
 
