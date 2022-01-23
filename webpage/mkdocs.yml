@@ -16,7 +16,23 @@ nav:
       - Instructions: "documenting/instructions.md"
       - Folder Structure: "documenting/folder_structure.md"
       - Guidelines: "documenting/guidelines.md"
-
+  - Notebooks:
+      - Create envelope: 
+        - Create low resolution envelope: "notebooks/1.1_voxelization_lowres.ipynb"
+        - Create high resolution envelope: "notebooks/1.2_voxelization_highres.ipynb"
+      - Create street points: "notebooks/1.3_streetpoint_creation.ipynb"
+      - Calculate static fields:
+        - Calculate sun and shadow: "notebooks/2.1_sun_and_shadow.ipynb"
+        - Calculate sky view factor: "notebooks/2.2_sky_view_factor.ipynb"
+        - Calculate football field distance: "notebooks/2.3_football_field_distance.ipynb"
+        - Calculate ground proximity and pent house factor: "notebooks/2.4_ground_proximity_and_penthouse_factor.ipynb"
+        - Calculate noise approval: "notebooks/2.5_noise_approval.ipynb"
+        - Calculate street distance: "notebooks/2.6_street_distance.ipynb"
+        - Calculate cardinal directions: "notebooks/2.8_west_east_north_south.ipynb"
+      - Use shadowing field to obtain final envelope: "notebooks/2.7_shadow_envelope.ipynb"
+      - Create corridors and shafts: "notebooks/3_corridors_and_shafts.ipynb"
+      - Growing the agents: "notebooks/4_agent_growth.ipynb"
+      - Polygonize: "notebooks/5_poligonization.ipynb"
 theme:
   name: "material"
 
@@ -25,3 +41,6 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.highlight
   - pymdownx.emoji
+
+plugins:
+  - mknotebooks
