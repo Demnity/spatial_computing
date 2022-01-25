@@ -1,18 +1,20 @@
 site_name: Spatial Computing Project Template
 
 nav:
-  - Home: "index.md"
+  - Home: "Home.md"
   - Planning: "a1_planning.md"
   - Configuring: "a2_configuring.md"
+      - Process: "a2_process.md"
+      - Product: "a2_product.md"
   - Massing: 
       - Process: "a3_massing_process.md"
       - Product: "a3_massing_product.md"
   - Forming: "a4_forming.md"
-  - About: "about.md"
+  - About: "a6_about.md"
   - Index:
       - Scripts: "index/scripts.md"
       - Figures: "index/figures.md"
-      - Presentations: "index/presentations.md"
+      - Presentations: "Mid_presentations.md"
       - Bibliography: "index/bibliography.md"
   - Documenting (TBR):
       - Instructions: "documenting/instructions.md"
@@ -35,6 +37,10 @@ nav:
       - Create corridors and shafts: "notebooks/3_corridors_and_shafts.ipynb"
       - Growing the agents: "notebooks/4_agent_growth.ipynb"
       - Polygonize: "notebooks/5_poligonization.ipynb"
+  - Final Deliverable: "final_delivarables.md"
+  - Reflections:
+      - Group Reflections: "reflection.md"
+      - Project Reflections: "reflection2.md" 
 theme:
   name: "material"
 
