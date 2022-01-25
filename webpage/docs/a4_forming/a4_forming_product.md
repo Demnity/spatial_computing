@@ -18,3 +18,8 @@ The first model is created by using the first tileset and the final mesh (all ag
 <img src="/img/a4_3.2.png"width="700">
 
 <img src="/img/a4_3.3.png"width="700">
+
+## Forming the second model
+
+The second model is created by using the second and the third tileset. Agents that are living spaces have the second tileset. Other agents have the third tileset. The result looks like this:
+
