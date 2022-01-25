@@ -38,7 +38,7 @@ nav:
       - Create corridors and shafts: "notebooks/3_corridors_and_shafts.ipynb"
       - Growing the agents: "notebooks/4_agent_growth.ipynb"
       - Polygonize: "notebooks/5_poligonization.ipynb"
-  - Final Deliverable: 'Final_deliverables.md'
+  - Final Deliverable: 'final_deliverables.md'
   - Reflections:
       - Group Reflections: "reflection.md"
       - Project Reflections: "reflection2.md" 
