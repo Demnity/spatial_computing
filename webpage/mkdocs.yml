@@ -1,4 +1,4 @@
-site_name: Spatial Computing Project Template
+site_name: Spatial Computing Project
 
 nav:
   - Home: "Home.md"
@@ -37,7 +37,7 @@ nav:
       - Growing the agents: "notebooks/4_agent_growth.ipynb"
       - Street safety: "notebooks/street_view.ipynb"
       - Polygonize: "notebooks/5_poligonization.ipynb"
-  - Final Deliverable: 'Final_deliverables.md'
+  - Final Deliverable: 'final_deliverables.md'
   - Reflections:
       - Group Reflections: "reflection.md"
       - Project Reflections: "reflection2.md" 
