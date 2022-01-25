@@ -4,7 +4,7 @@
 #### Squareness
 This behaviour takes a weight in range <strong>[0, 1] </strong>, representing how rectangular the shape the agent would grow into is.
 
-![Squareness](/img/squareness.jpg)
+![Squareness](./img/squareness.jpg)
 <i>The only voxel with value 2 (it has 2 neighbours adjacent to it) is the best voxel the agent wants to grow to if it wants to be rectangular.</i>
 <table><thead><tr class="header"><th>Pseudocode</th><th></th></tr></thead><tbody><tr class="odd"><td>Input</td><td>Square weight, current agent's free neighbours</td></tr><tr class="even"><td>Output</td><td><p>Change value priority of the free neighbours</p></td></tr>
 <tr class="odd"><td>Code</td><td>
@@ -65,13 +65,13 @@ When an agent has grown to its max size, if there is a better voxel in the neigh
 
 #### Building depth
 The behaviour limits the building depth, not allowing it grow further than the predefined maximum depth.
-![Depth stencil](/img/building_depth_stencil.jpg)
+![Depth stencil](./img/building_depth_stencil.jpg)
 <i>The stencil created in the x and y direction with the length of max depth 2. It has 4 axis, x, y, -x, -y.</i>
-![Depth scenario 1](/img/scenario1_building_depth.jpg)
+![Depth scenario 1](./img/scenario1_building_depth.jpg)
 <i>Here since all the values are 2, each voxel only has 1 of its axis filled (axis = value / max_depth, in this case the number of axis filled = 2 / 2 = 1). Since the number of axis filled is not 2, these voxels can still be considered as neighbours to the current agent.</i>
-![Depth scenario 2](/img/scenario2_building_depth.jpg)
+![Depth scenario 2](./img/scenario2_building_depth.jpg)
 <i>The same thing happens here, each voxel only has 1 axis filled, except for one voxel with 1.5 axis filled. Still, these voxels can be considered as neighbours.</i>
-![Depth scenario 3](/img/scenario3_building_depth.jpg)
+![Depth scenario 3](./img/scenario3_building_depth.jpg)
 <i>Here there is one voxel with value 4, meaning it has 2 of its axis filled. Therefore, the voxel is ignored and the agent won't grow to this voxel.</i>
 <table><thead><tr class="header"><th>Pseudocode</th><th></th></tr></thead><tbody><tr class="odd"><td>Input</td><td>Current agent locations</td></tr><tr class="even"><td>Output</td><td><p>Remove the neighbours that make the agent exceed the max depth</p></td></tr>
 <tr class="odd"><td>Code</td><td>

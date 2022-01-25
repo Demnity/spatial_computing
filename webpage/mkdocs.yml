@@ -1,8 +1,10 @@
-site_name: Spatial Computing Project Template
+site_name: Spatial Computing Project
 
 nav:
   - Home: "Home.md"
-  - Planning: "a1_planning.md"
+  - Planning:
+      - Process: "a1_process.md"
+      - Product: "a1_product.md"
   - Configuring: 
       - Process: "a2_process.md"
       - Product: "a2_product.md"
@@ -10,17 +12,13 @@ nav:
       - Process: "a3_massing_process.md"
       - Product: "a3_massing_product.md"
   - Forming:
-      - Forming Process: "a4_forming/a4_forming_proces.md"
-      - Forming Product: "a4_forming/a4_forming_product.md"
+      - Process: "a4_forming/a4_forming_proces.md"
+      - Product: "a4_forming/a4_forming_product.md"
   - About: "a6_about.md"
   - Index:
       - Figures: "index/figures.md"
       - Presentations: "Mid_presentations.md"
       - Bibliography: "index/bibliography.md"
-  # - Documenting (TBR):
-  #     - Instructions: "documenting/instructions.md"
-  #     - Folder Structure: "documenting/folder_structure.md"
-  #     - Guidelines: "documenting/guidelines.md"
   - Notebooks:
       - Create envelope: 
         - Create low resolution envelope: "notebooks/1.1_voxelization_lowres.ipynb"
@@ -37,8 +35,9 @@ nav:
       - Use shadowing field to obtain final envelope: "notebooks/2.7_shadow_envelope.ipynb"
       - Create corridors and shafts: "notebooks/3_corridors_and_shafts.ipynb"
       - Growing the agents: "notebooks/4_agent_growth.ipynb"
+      - Street safety: "notebooks/street_view.ipynb"
       - Polygonize: "notebooks/5_poligonization.ipynb"
-  - Final Deliverable: 'Final_deliverables.md'
+  - Final Deliverable: 'final_deliverables.md'
   - Reflections:
       - Group Reflections: "reflection.md"
       - Project Reflections: "reflection2.md" 

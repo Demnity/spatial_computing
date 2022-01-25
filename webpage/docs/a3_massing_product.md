@@ -1,3 +1,3 @@
 # Product
 ### Agent growth
-![Gif_growth](../img/agent_growth.gif)
+![Gif_growth](./img/agent_growth.gif)

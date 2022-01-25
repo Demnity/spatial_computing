@@ -2,24 +2,24 @@
 ## Forming the floorplan 
 The floorplans are based on a voxel size of 1.4 x 1.4 x 3.2 meters. This voxel size was decided upon by the design of our stairs. By using these voxels, a grid was created. Every 3 voxels, a colomn is paced. Every voxel has a border of 150 mm where a wall can be placed. By using the border of two adjecent voxels a structural wall can be created. This is done on the borders of houses.
 
-<img src="/img/a4_4.1.png"width="600">
+<img src="img/a4_4.1.png"width="600">
 
 *Stair design*
 
-<img src="/img/a4_4.2.jpg"width="600">
+<img src="img/a4_4.2.jpg"width="600">
 
 *grid*
 
 By using this grid, a series of furniture tiles have been created. The inhabitant of the house will arrange these furniture tiles in a way that suits their needs. The tiles can be arranged however they like, but a walking space (in blue) has been defined to make their job a little easier. These walking spaces are spaces that are required for a space to function (outside of the grid) or are able to provide for other tiles (inside the grid)
 
-<img src="/img/a4_4.3.jpg"width="700">
-<img src="/img/a4_4.4.jpg"width="600">
-<img src="/img/a4_4.5.jpg"width="600">
-<img src="/img/a4_4.6.jpg"width="600">
+<img src="img/a4_4.3.jpg"width="700">
+<img src="img/a4_4.4.jpg"width="600">
+<img src="img/a4_4.5.jpg"width="600">
+<img src="img/a4_4.6.jpg"width="600">
 
 *tiles*
 
-<img src="/img/a4_4.7.jpg"width="700">
+<img src="img/a4_4.7.jpg"width="700">
 
 *Example of a house (assisted living)*
 
@@ -31,11 +31,11 @@ The goal of the architectural part of the project is to make the building look h
 
 The first challenge to overcome was to create façade tiles that are laid over the final mesh. These tiles have to fit to the mesh, making sure that there are no gaps or weird corners. In the picture below, you can see the first tile set. The set was inspired by the Casa Milà, a building by Antoni Gaudì. The reason why this inspiration is chosen, is Gaudì’s process of design is completely different to our process. Gaudì spent a lot of time on details, creating incredibly complex buildings where every corner is different. On the contrary, our façade is a series of equal elements. The main challenge here is to capture a similar, lively and expressive feel by using a completely different method.
 
-<img src="/img/a4_1.1.jpg"width="700">
+<img src="img/a4_1.1.jpg"width="700">
 
 *Casa Milà - Antoni Gaudì*
 
-<img src="/img/a4_1.10.png"width="700">
+<img src="img/a4_1.10.png"width="700">
 
 *first tileset*
 
@@ -43,7 +43,7 @@ The first challenge to overcome was to create façade tiles that are laid over t
 
 To make the building look less repetitive, it is usefull to create multiple tilesets for different parts of the building. The following tilesets are inspired by "One River North", a building that was designed by MAD architects. This huilding has a very clear seperation between an organic part and a postmodernistic part. Inspired by this seperation, the following tilesets were created.
 
-<img src="/img/a4_1.11.png"width="700">
+<img src="img/a4_1.11.png"width="700">
 
 *Second and third tilesets*
 
@@ -51,19 +51,19 @@ The challenge with this idea is to select whether a voxel should be tiled by the
 
 A second idea is to give a tileset to a group of agents. This method gives less control to the architect, but makes the process automatic. For this to work, it is required that every agent is exported as a diffent meshes. The exported meshes that would get the same tileset would need to be grouped as one mesh. The main problem that this method creates is that the code must know that it is next to a voxel that belongs to a different group. This is required because tiles of different groups do not necessarily connect very well. In the images below two versions of the same part of the building are shown. In the first part, voxels recognize the neighbouring voxel (that belongs to a different group) as air. In the other version it recognizes the neighbouring voxel as a neighbouring voxel from a different group. In the example, this was done manually.
 
-<img src="/img/a4_2.1.png"width="700">
+<img src="img/a4_2.1.png"width="700">
 
 *Version 1 frontside*
 
-<img src="/img/a4_2.3.png"width="700">
+<img src="img/a4_2.3.png"width="700">
 
 *Version 1 Backside*
 
-<img src="/img/a4_2.2.png"width="700">
+<img src="img/a4_2.2.png"width="700">
 
 *Version 2 frontside*
 
-<img src="/img/a4_2.4.png"width="700">
+<img src="img/a4_2.4.png"width="700">
 
 *Version 2 Backside*
 
