@@ -166,10 +166,57 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Planning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Planning" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Planning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../a1_planning/" class="md-nav__link">
-        Planning
+      <a href="../a1_process/" class="md-nav__link">
+        Process
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../a1_product/" class="md-nav__link">
+        Product
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -418,7 +465,7 @@
   
     <li class="md-nav__item">
       <a href="../a4_forming/a4_forming_proces/" class="md-nav__link">
-        Forming Process
+        Process
       </a>
     </li>
   
@@ -432,7 +479,7 @@
   
     <li class="md-nav__item">
       <a href="../a4_forming/a4_forming_product/" class="md-nav__link">
-        Forming Product
+        Product
       </a>
     </li>
   
@@ -818,6 +865,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../notebooks/street_view/" class="md-nav__link">
+        Street safety
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../notebooks/5_poligonization/" class="md-nav__link">
         Polygonize
       </a>
@@ -1001,7 +1062,7 @@
 <h2 id="behaviour">Behaviour</h2>
 <h4 id="squareness">Squareness</h4>
 <p>This behaviour takes a weight in range <strong>[0, 1] </strong>, representing how rectangular the shape the agent would grow into is.</p>
-<p><img alt="Squareness" src="/img/squareness.jpg" />
+<p><img alt="Squareness" src="../img/squareness.jpg" />
 <i>The only voxel with value 2 (it has 2 neighbours adjacent to it) is the best voxel the agent wants to grow to if it wants to be rectangular.</i></p>
 <table><thead><tr class="header"><th>Pseudocode</th><th></th></tr></thead><tbody><tr class="odd"><td>Input</td><td>Square weight, current agent's free neighbours</td></tr><tr class="even"><td>Output</td><td><p>Change value priority of the free neighbours</p></td></tr>
 <tr class="odd"><td>Code</td><td>
@@ -1060,13 +1121,13 @@
 
 <h4 id="building-depth">Building depth</h4>
 <p>The behaviour limits the building depth, not allowing it grow further than the predefined maximum depth.
-<img alt="Depth stencil" src="/img/building_depth_stencil.jpg" />
+<img alt="Depth stencil" src="../img/building_depth_stencil.jpg" />
 <i>The stencil created in the x and y direction with the length of max depth 2. It has 4 axis, x, y, -x, -y.</i>
-<img alt="Depth scenario 1" src="/img/scenario1_building_depth.jpg" />
+<img alt="Depth scenario 1" src="../img/scenario1_building_depth.jpg" />
 <i>Here since all the values are 2, each voxel only has 1 of its axis filled (axis = value / max_depth, in this case the number of axis filled = 2 / 2 = 1). Since the number of axis filled is not 2, these voxels can still be considered as neighbours to the current agent.</i>
-<img alt="Depth scenario 2" src="/img/scenario2_building_depth.jpg" />
+<img alt="Depth scenario 2" src="../img/scenario2_building_depth.jpg" />
 <i>The same thing happens here, each voxel only has 1 axis filled, except for one voxel with 1.5 axis filled. Still, these voxels can be considered as neighbours.</i>
-<img alt="Depth scenario 3" src="/img/scenario3_building_depth.jpg" />
+<img alt="Depth scenario 3" src="../img/scenario3_building_depth.jpg" />
 <i>Here there is one voxel with value 4, meaning it has 2 of its axis filled. Therefore, the voxel is ignored and the agent won't grow to this voxel.</i></p>
 <table><thead><tr class="header"><th>Pseudocode</th><th></th></tr></thead><tbody><tr class="odd"><td>Input</td><td>Current agent locations</td></tr><tr class="even"><td>Output</td><td><p>Remove the neighbours that make the agent exceed the max depth</p></td></tr>
 <tr class="odd"><td>Code</td><td>
