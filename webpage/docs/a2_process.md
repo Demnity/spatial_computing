@@ -18,7 +18,7 @@ The connectiveness chart shows the connection between agents and spaces and has 
 
 based on the connectiveness chart the relative prefrences chart was made by assigning a level of importance (between 0 and 1) for each connection. 
 
-<iframe src="https://docs.google.com/spreadsheets/d/1rvnkMuqiWgCPXm_N5H8aBM5d_srQSfDutk2AlIN4zD0/edit#gid=0" style="width:150%; height:600px;" frameborder="0">
+<iframe src="https://docs.google.com/spreadsheets/d/1rvnkMuqiWgCPXm_N5H8aBM5d_srQSfDutk2AlIN4zD0/edit?usp=sharing" style="width:150%; height:600px;" frameborder="0">
 </iframe>
 *Relative prefrences chart*
 
@@ -26,7 +26,7 @@ based on the connectiveness chart the relative prefrences chart was made by assi
 
 The building is formed by the agents and each agent has it's own set of requirements based on the service it provides to the users. The space requirements where partly based on 
 
-<iframe src="https://docs.google.com/spreadsheets/d/1rvnkMuqiWgCPXm_N5H8aBM5d_srQSfDutk2AlIN4zD0/edit#gid=0" style="width:150%; height:600px;" frameborder="0">
+<iframe src="https://docs.google.com/spreadsheets/d/1bQiBhYUO5N8wir9nw1VwhP7LahvSmtPdcyQSV35pvKI/edit?usp=sharing" style="width:150%; height:600px;" frameborder="0">
 </iframe>
 *Space Requirement Chart*
 
