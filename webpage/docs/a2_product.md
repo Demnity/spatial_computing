@@ -9,11 +9,11 @@
 
 *Importance of Relationship*
 
-<img src='/img/adjacency_matrix_chart.jpg' alt="collective" style="width:300px;height:300px;">
+<img src='/img/adjacency_matrix_chart.jpg' alt="collective" style="width:1500px;height:1000px;">
 
 *voxelized envelope lowress*
 
-<img src='/img/voxelization_lowres2.png' alt="collective" style="width:300px;height:300px;">
+<img src='/img/voxelization_lowres2.png' alt="collective" style="width:1500px;height:1000px;">
 
 *voxelized envelope highres*
 
