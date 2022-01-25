@@ -14,7 +14,7 @@
     
     
       
-        <title>Presentations - Spatial Computing Project Template</title>
+        <title>Scripts - Spatial Computing Project Template</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#presentations" class="md-skip">
+        <a href="#scripts" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Presentations
+              Scripts
             
           </span>
         </div>
@@ -334,12 +334,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       
       
@@ -360,11 +362,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../scripts/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Scripts
       </a>
+      
     </li>
   
 
@@ -899,11 +911,17 @@
               
                 
                 
-                <h1 id="presentations">Presentations</h1>
+                <h1 id="scripts">Scripts</h1>
 <blockquote>
-<p>Here you should embed your poster and presentations. Here is an example:</p>
+<p>Here you should include all of your scripts whether they are text, python notebook or procedural scripts. You should also include link to the link to relevant location in the main pages, description, explanatory materials such as pseudo code or flowcharts, and visualizations if it is applicable. If necessary this page can be broken down to multiple pages. Here is an example of how to include your scripts:</p>
 </blockquote>
-<iframe src="https://docs.google.com/gview?url=https://github.com/shervinazadi/spatial_computing_project_template/blob/master/docs/pdf/SpatialComputing.pdf?raw=true&embedded=true" style="width:100%; height:400px;" frameborder="0"></iframe>
+<div class="codehilite"><pre><span></span><code><span class="n">edges</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">cell_neigh</span> <span class="ow">in</span> <span class="n">cell_neighbors</span><span class="p">:</span>
+    <span class="n">cell</span> <span class="o">=</span> <span class="n">cell_neigh</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">neigh</span> <span class="ow">in</span> <span class="n">cell_neigh</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="k">if</span> <span class="n">neigh</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">neigh</span> <span class="o">&gt;</span> <span class="n">cell</span><span class="p">:</span>
+            <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">cell</span><span class="p">,</span> <span class="n">neigh</span><span class="p">))</span>
+</code></pre></div>
                 
               
               
@@ -919,6 +937,41 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../a6_about/" class="md-footer__link md-footer__link--prev" aria-label="Previous: About" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              About
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../figures/" class="md-footer__link md-footer__link--next" aria-label="Next: Figures" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Figures
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
