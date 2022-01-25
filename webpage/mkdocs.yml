@@ -2,7 +2,9 @@ site_name: Spatial Computing Project Template
 
 nav:
   - Home: "Home.md"
-  - Planning: "a1_planning.md"
+  - Planning:
+      - Process: "a1_process.md"
+      - Product: "a1_product.md"
   - Configuring: 
       - Process: "a2_process.md"
       - Product: "a2_product.md"
@@ -17,10 +19,6 @@ nav:
       - Figures: "index/figures.md"
       - Presentations: "Mid_presentations.md"
       - Bibliography: "index/bibliography.md"
-  # - Documenting (TBR):
-  #     - Instructions: "documenting/instructions.md"
-  #     - Folder Structure: "documenting/folder_structure.md"
-  #     - Guidelines: "documenting/guidelines.md"
   - Notebooks:
       - Create envelope: 
         - Create low resolution envelope: "notebooks/1.1_voxelization_lowres.ipynb"
@@ -37,6 +35,7 @@ nav:
       - Use shadowing field to obtain final envelope: "notebooks/2.7_shadow_envelope.ipynb"
       - Create corridors and shafts: "notebooks/3_corridors_and_shafts.ipynb"
       - Growing the agents: "notebooks/4_agent_growth.ipynb"
+      - Street safety: "notebooks/street_view.ipynb"
       - Polygonize: "notebooks/5_poligonization.ipynb"
   - Final Deliverable: 'Final_deliverables.md'
   - Reflections:
