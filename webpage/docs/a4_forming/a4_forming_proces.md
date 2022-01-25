@@ -6,9 +6,7 @@
 | Procedure | Finalize the plans and the forms of all functional units. Optionally, choose a way to alter the jaggedness of voxels in the final form by partially bringing in contrasting curvy shapes, for instance as a shell around the building, e.g. through smoothing, relaxation, iso-surfaces, or topological transformation. | -->
 
 # Floorplans Forming Process
-
-## Forming the floorplans
-
+## Forming the floorplan 
 The floorplans are based on a voxel size of 1.4 x 1.4 x 3.2 meters. This voxel size was decided upon by the design of our stairs. By using these voxels, a grid was created. Every 3 voxels, a colomn is paced. Every voxel has a border of 150 mm where a wall can be placed. By using the border of two adjecent voxels a structural wall can be created. This is done on the borders of houses.
 
 <img src="/img/a4_4.1.png"width="600">
@@ -19,13 +17,16 @@ Stair design
 
 grid
 
-By using this grid, a series of furniture tiles have been created. The inhabitant of the house will arrange these furniture tiles in a way that suits their needs. The tiles can be arranged however they like, but a walking space has been defined to make their job a little easier.
+By using this grid, a series of furniture tiles have been created. The inhabitant of the house will arrange these furniture tiles in a way that suits their needs. The tiles can be arranged however they like, but a walking space (in blue) has been defined to make their job a little easier. These walking spaces are spaces that are required for a space to function (outside of the grid) or are able to provide for other tiles (inside the grid)
 
-<img src="/img/a4_floorplan tiles.jpg"width="600">
+<img src="/img/a4_4.3.jpg"width="700">
+<img src="/img/a4_4.4.jpg"width="600">
+<img src="/img/a4_4.5.jpg"width="600">
+<img src="/img/a4_4.6.jpg"width="600">
 
 tiles
 
-<img src="/img/a4_4.3.jpg"width="700">
+<img src="/img/a4_4.7.jpg"width="700">
 
 Example of a house (assisted living)
 
