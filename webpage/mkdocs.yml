@@ -4,7 +4,9 @@ nav:
   - Home: "index.md"
   - Planning: "a1_planning.md"
   - Configuring: "a2_configuring.md"
-  - Massing: "a3_massing.md"
+  - Massing: 
+      - Process: "a3_massing.md"
+      - Product: 
   - Forming: "a4_forming.md"
   - About: "about.md"
   - Index:
