@@ -1,4 +1,4 @@
-site_name: Spatial Computing Project Template
+site_name: Spatial Computing Project
 
 nav:
   - Home: "Home.md"
@@ -10,8 +10,8 @@ nav:
       - Process: "a3_massing_process.md"
       - Product: "a3_massing_product.md"
   - Forming:
-      - Process: "a4_forming/a4_forming_proces.md"
-      - Product: "a4_forming/a4_forming_product.md"
+      - Forming Process: "a4_forming/a4_forming_proces.md"
+      - Forming Product: "a4_forming/a4_forming_product.md"
   - About: "a6_about.md"
   - Index:
       - Figures: "index/figures.md"
