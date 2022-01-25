@@ -1,0 +1,2380 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Street safety - Spatial Computing Project</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#collecting-agent-voxels-and-creating-a-mesh-out-of-them" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Spatial Computing Project" class="md-header__button md-logo" aria-label="Spatial Computing Project" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spatial Computing Project
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Street safety
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Spatial Computing Project" class="md-nav__button md-logo" aria-label="Spatial Computing Project" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Spatial Computing Project
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Home/" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Planning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Planning" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Planning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../a1_process/" class="md-nav__link">
+        Process
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../a1_product/" class="md-nav__link">
+        Product
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Configuring
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Configuring" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Configuring
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../a2_process/" class="md-nav__link">
+        Process
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../a2_product/" class="md-nav__link">
+        Product
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Massing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Massing" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Massing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../a3_massing_process/" class="md-nav__link">
+        Process
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../a3_massing_product/" class="md-nav__link">
+        Product
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Forming
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Forming" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Forming
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../a4_forming/a4_forming_proces/" class="md-nav__link">
+        Forming Process
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../a4_forming/a4_forming_product/" class="md-nav__link">
+        Forming Product
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../a6_about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Index
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Index" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Index
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index/figures/" class="md-nav__link">
+        Figures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mid_presentations/" class="md-nav__link">
+        Presentations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index/bibliography/" class="md-nav__link">
+        Bibliography
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Notebooks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Notebooks" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Notebooks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_1" type="checkbox" id="__nav_8_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8_1">
+          Create envelope
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Create envelope" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_1">
+          <span class="md-nav__icon md-icon"></span>
+          Create envelope
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.1_voxelization_lowres/" class="md-nav__link">
+        Create low resolution envelope
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.2_voxelization_highres/" class="md-nav__link">
+        Create high resolution envelope
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.3_streetpoint_creation/" class="md-nav__link">
+        Create street points
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_3" type="checkbox" id="__nav_8_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8_3">
+          Calculate static fields
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Calculate static fields" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_3">
+          <span class="md-nav__icon md-icon"></span>
+          Calculate static fields
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.1_sun_and_shadow/" class="md-nav__link">
+        Calculate sun and shadow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.2_sky_view_factor/" class="md-nav__link">
+        Calculate sky view factor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.3_football_field_distance/" class="md-nav__link">
+        Calculate football field distance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.4_ground_proximity_and_penthouse_factor/" class="md-nav__link">
+        Calculate ground proximity and pent house factor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.5_noise_approval/" class="md-nav__link">
+        Calculate noise approval
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.6_street_distance/" class="md-nav__link">
+        Calculate street distance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.8_west_east_north_south/" class="md-nav__link">
+        Calculate cardinal directions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.7_shadow_envelope/" class="md-nav__link">
+        Use shadowing field to obtain final envelope
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_corridors_and_shafts/" class="md-nav__link">
+        Create corridors and shafts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_agent_growth/" class="md-nav__link">
+        Growing the agents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Street safety
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Street safety
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#collecting-agent-voxels-and-creating-a-mesh-out-of-them" class="md-nav__link">
+    Collecting Agent voxels and creating a mesh out of them
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#collecting-facade-voxels-and-their-centroids" class="md-nav__link">
+    Collecting facade voxels and their centroids
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-context-mesh-to-the-agent-mesh" class="md-nav__link">
+    adding context mesh to the agent mesh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together-in-a-single-visualization" class="md-nav__link">
+    Putting it all together in a single visualization
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extracting-vector-between-facade-centroid-and-street-points" class="md-nav__link">
+    extracting vector between facade centroid and street points
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sky_view-scrpit" class="md-nav__link">
+    sky_view scrpit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intersection-post-process" class="md-nav__link">
+    intersection post process
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scoring-the-streetview-rays" class="md-nav__link">
+    Scoring the streetview rays
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replacing-the-hit-information-with-the-scoring-information" class="md-nav__link">
+    replacing the hit information with the scoring information
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5_poligonization/" class="md-nav__link">
+        Polygonize
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../final_deliverables/" class="md-nav__link">
+        Final Deliverable
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          Reflections
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reflections" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Reflections
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reflection/" class="md-nav__link">
+        Group Reflections
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reflection2/" class="md-nav__link">
+        Project Reflections
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#collecting-agent-voxels-and-creating-a-mesh-out-of-them" class="md-nav__link">
+    Collecting Agent voxels and creating a mesh out of them
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#collecting-facade-voxels-and-their-centroids" class="md-nav__link">
+    Collecting facade voxels and their centroids
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-context-mesh-to-the-agent-mesh" class="md-nav__link">
+    adding context mesh to the agent mesh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together-in-a-single-visualization" class="md-nav__link">
+    Putting it all together in a single visualization
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extracting-vector-between-facade-centroid-and-street-points" class="md-nav__link">
+    extracting vector between facade centroid and street points
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sky_view-scrpit" class="md-nav__link">
+    sky_view scrpit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intersection-post-process" class="md-nav__link">
+    intersection post process
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scoring-the-streetview-rays" class="md-nav__link">
+    Scoring the streetview rays
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#replacing-the-hit-information-with-the-scoring-information" class="md-nav__link">
+    replacing the hit information with the scoring information
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Street safety</h1>
+                
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var requireJsScript = document.createElement('script');
+    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
+
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var jupyterWidgetsScript = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    jupyterWidgetsScript.src = widgetRendererSrc;
+
+    document.body.appendChild(requireJsScript);
+    document.body.appendChild(jupyterWidgetsScript);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A lot of this stuff hinges on having the right initial data. We cant run the agents at this moment. I Added the stuff here that was already in workshop 4, but like I said, it will not run.</p>
+<p>Personally, I believe that we have to store the eventual data of every script in a csv file. This script needs a program of requirements.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Load Libraries</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">topogenesis</span> <span class="k">as</span> <span class="nn">tg</span>
+<span class="kn">import</span> <span class="nn">pyvista</span> <span class="k">as</span> <span class="nn">pv</span>
+<span class="kn">import</span> <span class="nn">trimesh</span> <span class="k">as</span> <span class="nn">tm</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">functions</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># convert mesh to pv_mesh</span>
+<span class="k">def</span> <span class="nf">tri_to_pv</span><span class="p">(</span><span class="n">tri_mesh</span><span class="p">):</span>
+    <span class="n">faces</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">tri_mesh</span><span class="o">.</span><span class="n">faces</span><span class="p">,</span> <span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span> <span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">constant_values</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">pv_mesh</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">PolyData</span><span class="p">(</span><span class="n">tri_mesh</span><span class="o">.</span><span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pv_mesh</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Define Stencil</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># creating neighborhood definition</span>
+<span class="n">stencil</span> <span class="o">=</span> <span class="n">tg</span><span class="o">.</span><span class="n">create_stencil</span><span class="p">(</span><span class="s2">&quot;von_neumann&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># setting the center to zero</span>
+<span class="n">stencil</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stencil</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>[[[0 0 0]
+  [0 1 0]
+  [0 0 0]]
+
+ [[0 1 0]
+  [1 0 1]
+  [0 1 0]]
+
+ [[0 0 0]
+  [0 1 0]
+  [0 0 0]]]
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Define the environment</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># loading the lattice from csv</span>
+<span class="n">lattice_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="s1">&#39;../data/meshes/voxelized_envelope_highres.csv&#39;</span><span class="p">)</span>
+<span class="n">avail_lattice</span> <span class="o">=</span> <span class="n">tg</span><span class="o">.</span><span class="n">lattice_from_csv</span><span class="p">(</span><span class="n">lattice_path</span><span class="p">)</span>
+<span class="n">init_avail_lattice</span> <span class="o">=</span> <span class="n">tg</span><span class="o">.</span><span class="n">to_lattice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">avail_lattice</span><span class="p">),</span> <span class="n">avail_lattice</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>load program (insert the program of requirements here)</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1">#loading the relative relations excell</span>
+
+<span class="c1"># relative_rels = pd.read_excel(&#39;../data/relationships/relative_relations.xlsx&#39;, index_col=0) </span>
+<span class="c1"># relative_rels_norm = relative_rels.div(relative_rels.sum(axis=1), axis=0)</span>
+<span class="c1"># relative_rels_norm = relative_rels_norm.fillna(0)</span>
+
+<span class="c1">#loading the relative preferences excell</span>
+<span class="n">relative_prefs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;../data/relationships/relative_preferences.xlsx&#39;</span><span class="p">)</span>
+<span class="n">relative_prefs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">relative_prefs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">relative_prefs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">relative_prefs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">relative_prefs</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">relative_prefs_norm</span> <span class="o">=</span> <span class="n">relative_prefs</span>
+<span class="n">relative_prefs_norm</span> <span class="o">=</span> <span class="n">relative_prefs_norm</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="n">program_prefs</span> <span class="o">=</span> <span class="n">relative_prefs_norm</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;space_name&quot;</span><span class="p">,</span> <span class="s2">&quot;facade_connection&quot;</span><span class="p">,</span><span class="s2">&quot;penthouse_factor&quot;</span><span class="p">,</span><span class="s2">&quot;street_sight&quot;</span><span class="p">,</span> <span class="s2">&quot;noise_approval&quot;</span><span class="p">,</span> <span class="s2">&quot;sunlight_access&quot;</span><span class="p">,</span> <span class="s2">&quot;sky_view_factor&quot;</span><span class="p">,</span> <span class="s2">&quot;football_field&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">program_prefs</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="scoped">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>proximity_to_ground_floor</th>
+    </tr>
+  </thead>
+<tbody>
+    <tr>
+      <th>0</th>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.181818</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Load the value fields</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># loading the lattice from csv</span>
+<span class="n">fields</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">program_prefs</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">lattice_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="s1">&#39;../data/fields/&#39;</span> <span class="o">+</span> <span class="n">f</span> <span class="o">+</span> <span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
+    <span class="n">fields</span><span class="p">[</span><span class="n">f</span><span class="p">]</span> <span class="o">=</span> <span class="n">tg</span><span class="o">.</span><span class="n">lattice_from_csv</span><span class="p">(</span><span class="n">lattice_path</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Initialize the agents</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># initialize the occupation lattice</span>
+<span class="n">occ_lattice</span> <span class="o">=</span> <span class="n">avail_lattice</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">-</span> <span class="mi">1</span>
+
+<span class="c1"># Finding the index of the available voxels in avail_lattice</span>
+<span class="n">avail_flat</span> <span class="o">=</span> <span class="n">avail_lattice</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">avail_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">avail_lattice</span> <span class="o">==</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+
+<span class="c1"># Randomly choosing three available voxels</span>
+<span class="n">agn_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">program_prefs</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">()</span>
+<span class="n">select_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">avail_index</span><span class="p">),</span> <span class="n">agn_num</span><span class="p">)</span>
+<span class="n">agn_origins</span> <span class="o">=</span> <span class="n">avail_index</span><span class="p">[</span><span class="n">select_id</span><span class="p">]</span>
+
+<span class="c1"># adding the origins to the agents locations</span>
+<span class="n">agn_locs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># for each agent origin ... </span>
+<span class="k">for</span> <span class="n">a_id</span><span class="p">,</span> <span class="n">a_origin</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">agn_origins</span><span class="p">):</span>
+
+    <span class="c1"># add the origin to the list of agent locations</span>
+    <span class="n">agn_locs</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">a_origin</span><span class="p">])</span>
+
+    <span class="c1"># set the origin in availablity lattice as 0 (UNavailable)</span>
+    <span class="n">avail_lattice</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">a_origin</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># set the origin in occupation lattice as the agent id (a_id)</span>
+    <span class="n">occ_lattice</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">a_origin</span><span class="p">)]</span> <span class="o">=</span> <span class="n">a_id</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>printing the ammount of agents</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">a_id</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>2
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>show the agents</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="n">p</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">notebook</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Set the grid dimensions: shape + 1 because we want to inject our values on the CELL data</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">UniformGrid</span><span class="p">()</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">dimensions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">occ_lattice</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="c1"># The bottom left corner of the data set</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">origin</span> <span class="o">=</span> <span class="n">occ_lattice</span><span class="o">.</span><span class="n">minbound</span> <span class="o">-</span> <span class="n">occ_lattice</span><span class="o">.</span><span class="n">unit</span> <span class="o">*</span> <span class="mf">0.5</span>
+<span class="c1"># These are the cell sizes along each axis</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">spacing</span> <span class="o">=</span> <span class="n">occ_lattice</span><span class="o">.</span><span class="n">unit</span> 
+
+<span class="c1"># adding the boundingbox wireframe</span>
+<span class="n">p</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">outline</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Domain&quot;</span><span class="p">)</span>
+
+<span class="c1"># adding axes</span>
+<span class="n">p</span><span class="o">.</span><span class="n">add_axes</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">show_bounds</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="s2">&quot;back&quot;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;back&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#777777&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add the data values to the cell data</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">cell_arrays</span><span class="p">[</span><span class="s2">&quot;Agents&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">occ_lattice</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>  <span class="c1"># Flatten the array!</span>
+<span class="c1"># filtering the voxels</span>
+<span class="n">threshed</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">threshold</span><span class="p">([</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">agn_num</span> <span class="o">-</span> <span class="mf">0.9</span><span class="p">])</span>
+<span class="c1"># adding the voxels</span>
+<span class="n">p</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">threshed</span><span class="p">,</span> <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">show_scalar_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># adding the availability lattice</span>
+<span class="n">init_avail_lattice</span><span class="o">.</span><span class="n">fast_vis</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">use_ipyvtk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div id="f1d039c5-2e97-4c91-85fc-71306c677b7c"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#f1d039c5-2e97-4c91-85fc-71306c677b7c');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "0ea87b2ff0a045b996c77b44c25d556c", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+</div>
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>[(239.8279062084888, 147.3279062084888, 222.3279062084888),
+ (35.0, -57.5, 17.5),
+ (0.0, 0.0, 1.0)]</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Run the simulation</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># make a deep copy of occupation lattice</span>
+<span class="n">cur_occ_lattice</span> <span class="o">=</span> <span class="n">tg</span><span class="o">.</span><span class="n">to_lattice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">occ_lattice</span><span class="p">),</span> <span class="n">occ_lattice</span><span class="p">)</span>
+<span class="c1"># initialzing the list of frames</span>
+<span class="n">frames</span> <span class="o">=</span> <span class="p">[</span><span class="n">cur_occ_lattice</span><span class="p">]</span>
+
+<span class="c1"># setting the time variable to 0</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">n_frames</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="c1"># main feedback loop of the simulation (for each time step ...)</span>
+<span class="k">while</span> <span class="n">t</span><span class="o">&lt;</span><span class="n">n_frames</span><span class="p">:</span>
+    <span class="c1"># for each agent ... </span>
+    <span class="k">for</span> <span class="n">a_id</span><span class="p">,</span> <span class="n">a_prefs</span> <span class="ow">in</span> <span class="n">relative_prefs_norm</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="c1"># retrieve the list of the locations of the current agent</span>
+        <span class="n">a_locs</span> <span class="o">=</span> <span class="n">agn_locs</span><span class="p">[</span><span class="n">a_id</span><span class="p">]</span>
+        <span class="c1"># initialize the list of free neighbours</span>
+        <span class="n">free_neighs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># for each location of the agent</span>
+        <span class="k">for</span> <span class="n">loc</span> <span class="ow">in</span> <span class="n">a_locs</span><span class="p">:</span>
+            <span class="c1"># retrieve the list of neighbours of the agent based on the stencil</span>
+            <span class="n">neighs</span> <span class="o">=</span> <span class="n">avail_lattice</span><span class="o">.</span><span class="n">find_neighbours_masked</span><span class="p">(</span><span class="n">stencil</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="n">loc</span><span class="p">)</span>
+
+            <span class="c1"># for each neighbour ... </span>
+            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">neighs</span><span class="p">:</span>
+                <span class="c1"># compute 3D index of neighbour</span>
+                <span class="n">neigh_3d_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">avail_lattice</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+                <span class="c1"># if the neighbour is available... </span>
+                <span class="k">if</span> <span class="n">avail_lattice</span><span class="p">[</span><span class="n">neigh_3d_id</span><span class="p">]:</span>
+                    <span class="c1"># add the neighbour to the list of free neighbours</span>
+                    <span class="n">free_neighs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">neigh_3d_id</span><span class="p">)</span>
+        <span class="c1"># check if found any free neighbour</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">free_neighs</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># convert free neighbours to a numpy array</span>
+            <span class="n">fns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">free_neighs</span><span class="p">)</span>
+
+            <span class="c1"># find the value of neighbours</span>
+            <span class="c1"># init the agent value array</span>
+            <span class="n">a_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fns</span><span class="p">))</span>
+            <span class="c1"># for each field...</span>
+            <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">program_prefs</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+                <span class="c1"># find the raw value of free neighbours...</span>
+                <span class="n">vals</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="n">f</span><span class="p">][</span><span class="n">fns</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">fns</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">fns</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]]</span>
+                <span class="c1"># raise the the raw value to the power of preference weight of the agent</span>
+                <span class="n">a_weighted_vals</span> <span class="o">=</span> <span class="n">vals</span> <span class="o">**</span> <span class="n">a_prefs</span><span class="p">[</span><span class="n">f</span><span class="p">]</span>
+                <span class="c1"># multiply them to the previous weighted values</span>
+                <span class="n">a_eval</span> <span class="o">*=</span> <span class="n">a_weighted_vals</span>
+
+            <span class="c1">#post-processing</span>
+            <span class="n">functions</span><span class="o">.</span><span class="n">squareness</span><span class="p">(</span><span class="n">square_weight</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">free_neighs</span><span class="o">=</span><span class="n">free_neighs</span><span class="p">,</span> <span class="n">a_eval</span><span class="o">=</span><span class="n">a_eval</span><span class="p">)</span>
+
+
+            <span class="c1"># select the neighbour with highest evaluation</span>
+            <span class="n">selected_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">a_eval</span><span class="p">)</span>
+            <span class="c1"># find 3D integer index of selected neighbour</span>
+            <span class="n">selected_neigh_3d_id</span> <span class="o">=</span> <span class="n">free_neighs</span><span class="p">[</span><span class="n">selected_int</span><span class="p">]</span>
+            <span class="c1"># find the location of the newly selected neighbour</span>
+            <span class="n">selected_neigh_loc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">selected_neigh_3d_id</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+            <span class="c1"># add the newly selected neighbour location to agent locations</span>
+            <span class="n">agn_locs</span><span class="p">[</span><span class="n">a_id</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">selected_neigh_loc</span><span class="p">)</span>
+            <span class="c1"># set the newly selected neighbour as UNavailable (0) in the availability lattice</span>
+            <span class="n">avail_lattice</span><span class="p">[</span><span class="n">selected_neigh_3d_id</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># set the newly selected neighbour as OCCUPIED by current agent </span>
+            <span class="c1"># (-1 means not-occupied so a_id)</span>
+            <span class="n">occ_lattice</span><span class="p">[</span><span class="n">selected_neigh_3d_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">a_id</span>
+
+    <span class="c1"># constructing the new lattice</span>
+    <span class="n">new_occ_lattice</span> <span class="o">=</span> <span class="n">tg</span><span class="o">.</span><span class="n">to_lattice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">occ_lattice</span><span class="p">),</span> <span class="n">occ_lattice</span><span class="p">)</span>
+    <span class="c1"># adding the new lattice to the list of frames</span>
+    <span class="n">frames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_occ_lattice</span><span class="p">)</span>
+    <span class="c1"># adding one to the time counter</span>
+    <span class="n">t</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Visualize the result</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="n">p</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">notebook</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">base_lattice</span> <span class="o">=</span> <span class="n">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Set the grid dimensions: shape + 1 because we want to inject our values on the CELL data</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">UniformGrid</span><span class="p">()</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">dimensions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">base_lattice</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="c1"># The bottom left corner of the data set</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">origin</span> <span class="o">=</span> <span class="n">base_lattice</span><span class="o">.</span><span class="n">minbound</span> <span class="o">-</span> <span class="n">base_lattice</span><span class="o">.</span><span class="n">unit</span> <span class="o">*</span> <span class="mf">0.5</span>
+<span class="c1"># These are the cell sizes along each axis</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">spacing</span> <span class="o">=</span> <span class="n">base_lattice</span><span class="o">.</span><span class="n">unit</span> 
+
+<span class="c1"># adding the boundingbox wireframe</span>
+<span class="n">p</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">outline</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Domain&quot;</span><span class="p">)</span>
+
+<span class="c1"># adding the availability lattice</span>
+<span class="n">init_avail_lattice</span><span class="o">.</span><span class="n">fast_vis</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+<span class="c1"># adding axes</span>
+<span class="n">p</span><span class="o">.</span><span class="n">add_axes</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">show_bounds</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="s2">&quot;back&quot;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;back&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#aaaaaa&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">create_mesh</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">lattice</span> <span class="o">=</span> <span class="n">frames</span><span class="p">[</span><span class="n">f</span><span class="p">]</span>
+
+    <span class="c1"># Add the data values to the cell data</span>
+    <span class="n">grid</span><span class="o">.</span><span class="n">cell_arrays</span><span class="p">[</span><span class="s2">&quot;Agents&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lattice</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>  <span class="c1"># Flatten the array!</span>
+    <span class="c1"># filtering the voxels</span>
+    <span class="n">threshed</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">threshold</span><span class="p">([</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">agn_num</span> <span class="o">-</span> <span class="mf">0.9</span><span class="p">])</span>
+    <span class="c1"># adding the voxels</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">threshed</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;sphere&#39;</span><span class="p">,</span> <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">show_scalar_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">return</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">add_slider_widget</span><span class="p">(</span><span class="n">create_mesh</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_frames</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">event_type</span><span class="o">=</span><span class="s2">&quot;always&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;classic&quot;</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">use_ipyvtk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div id="dd6710fd-a9ee-4fd2-b19f-691bfb967245"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#dd6710fd-a9ee-4fd2-b19f-691bfb967245');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "71b7f71824c64b52ac661620d5927d22", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+</div>
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>[(239.8279062084888, 147.3279062084888, 222.3279062084888),
+ (35.0, -57.5, 17.5),
+ (0.0, 0.0, 1.0)]</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># inputting the street grid</span>
+<span class="n">street_grid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="s2">&quot;../data/meshes/grid_points_2022.csv&quot;</span><span class="p">)</span>
+<span class="n">street_g</span> <span class="o">=</span> <span class="n">tg</span><span class="o">.</span><span class="n">cloud_from_csv</span><span class="p">(</span><span class="n">street_grid</span><span class="p">)</span>
+
+<span class="c1"># street_grid_full = os.path.relpath(&quot;../data/meshes/grid_points_2022_full.csv&quot;)</span>
+<span class="c1"># street_g = tg.cloud_from_csv(street_grid_full)</span>
+
+
+<span class="c1"># inputting the surrounding buildings meshes</span>
+<span class="n">context_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="s1">&#39;../data/meshes/immediate_context.obj&#39;</span><span class="p">)</span>
+<span class="n">context_mesh</span> <span class="o">=</span> <span class="n">tm</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">context_path</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="collecting-agent-voxels-and-creating-a-mesh-out-of-them">Collecting Agent voxels and creating a mesh out of them</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># duplicating the ocuupied lattice from the agent growth process</span>
+<span class="n">occupied_lattice</span> <span class="o">=</span> <span class="n">tg</span><span class="o">.</span><span class="n">to_lattice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">avail_lattice</span><span class="p">),</span> <span class="n">avail_lattice</span><span class="p">)</span>
+<span class="c1"># setting the values of the occupied lattice to 0</span>
+<span class="n">occupied_lattice</span><span class="p">[</span><span class="n">occupied_lattice</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="c1"># retrieving the agent locations</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">agn_locs</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">loc</span> <span class="ow">in</span> <span class="n">agn_locs</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+        <span class="n">occupied_lattice</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">loc</span><span class="p">)]</span><span class="o">=</span><span class="mi">1</span>
+
+
+<span class="c1"># initiating the plotter</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
+
+<span class="c1"># fast visualization of the lattice</span>
+<span class="n">occupied_lattice</span><span class="o">.</span><span class="n">fast_vis</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+
+<span class="c1"># plotting</span>
+<span class="n">p</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">use_ipyvtk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div id="3c362d65-d2d4-4db9-a4a9-c50263af4f37"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#3c362d65-d2d4-4db9-a4a9-c50263af4f37');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "893690c2ffaa412da0b1619357e21e1c", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+</div>
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>[(239.8279062084888, 147.3279062084888, 222.3279062084888),
+ (35.0, -57.5, 17.5),
+ (0.0, 0.0, 1.0)]</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># create a transformation matrix for each agent location </span>
+<span class="k">def</span> <span class="nf">transformation_matrix</span> <span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">])],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">])],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">])],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]</span>
+
+
+
+<span class="c1"># collecting center points of agent voxels</span>
+<span class="n">agn_cens</span> <span class="o">=</span> <span class="n">occupied_lattice</span><span class="o">.</span><span class="n">centroids_threshold</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># creating a box mesh and transforming it to each centroid of the agent voxels with the transformation matrix above</span>
+<span class="n">meshes</span> <span class="o">=</span> <span class="p">[</span><span class="n">tm</span><span class="o">.</span><span class="n">creation</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">extents</span><span class="o">=</span><span class="n">avail_lattice</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span><span class="n">transform</span><span class="o">=</span><span class="n">transformation_matrix</span><span class="p">(</span><span class="n">agn_cens</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">agn_cens</span><span class="p">))]</span>
+<span class="n">agent_mesh</span> <span class="o">=</span> <span class="n">tm</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">meshes</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># initiating the plotter</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">notebook</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># env_cens.fast_vis(p)</span>
+
+<span class="c1"># adding the meshes</span>
+<span class="n">p</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">tri_to_pv</span><span class="p">(</span><span class="n">agent_mesh</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#abd8ff&#39;</span><span class="p">)</span>
+
+<span class="c1"># plotting</span>
+<span class="n">p</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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AAAAgQgAAAAIRAAAAEAgAgAAAAIRAAAAEIgAAACAQAQAAAAEIgAAACAQAQAAAIEIAAAACEQAAABAIAIAAAACEQAAABCIAAAAgEAEAAAABCIAAAAgEAEAAACBCAAAAAhEAAAAQCACAAAAAhEAAAAQiAAAAIBABAAAAAQiAAAAIBABAAAAgQgAAAAIRAAAAEAgAgAAAAIRAAAAEIgAAACAQAQAAAAEIgAAACAQAQAAAIEIAAAACEQAAABAIAIAAAACEQAAABCIAAAAgEAEAAAABCIAAAAgEAEAAACBCAAAAAhEAAAAQCACAAAAAhEAAAAQiAAAAIBABAAAAAQiAAAAIBABAAAAgQgAAAAIRAAAAEAgAgAAAAIRAAAAEIgAAACAQAQAAAAEIgAAACAQAQAAAIEIAAAACEQAAABAIAIAAAACEQAAABCIAAAAgEAEAAAABCIAAAAgEAEAAACBCAAAAAhEAAAAQCACAAAAAhEAAAAQiAAAAIBABAAAAAQiAAAAIBABAAAAgQgAAAAIRAAAAEAgAgAAAAIRAAAAEIgAAACAQAQAAAAEIgAAACAQAQAAAIEIAAAACEQAAABAIAIAAAACEQAAABCIAAAAgEAEAAAABCIAAAAgEAEAAACBCAAAAAhEAAAAQCACAAAAAhEAAAAQiAAAAIBABAAAAAQiAAAAIBABAAAAgQgAAAAIRAAAAEAgAgAAAAIRAAAAEIgAAACAQAQAAAAEIgAAACAQAQAAAIEIAAAACEQAAABAIAIAAAACEQAAABCIAAAAgEAEAAAABCIAAAAgEAEAAACBCAAAAAhEAAAAQCACAAAAAhEAAAAQyP8HJDY6yGIMLKEAAAAASUVORK5CYII="
+>
+</div>
+</div>
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>[(146.26170257013146, 83.76170257013146, 151.26170257013146),
+ (15.0, -47.5, 20.0),
+ (0.0, 0.0, 1.0)]</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="collecting-facade-voxels-and-their-centroids">Collecting facade voxels and their centroids</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># creating neighborhood definition</span>
+<span class="n">stencil</span> <span class="o">=</span> <span class="n">tg</span><span class="o">.</span><span class="n">create_stencil</span><span class="p">(</span><span class="s2">&quot;von_neumann&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># setting the center to zero</span>
+<span class="n">stencil</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">stencil</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">stencil</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">stencil</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="n">tg</span><span class="o">.</span><span class="n">sfunc</span><span class="o">.</span><span class="n">sum</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stencil</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>[[[0 0 0]
+  [0 1 0]
+  [0 0 0]]
+
+ [[0 1 0]
+  [0 0 0]
+  [0 1 0]]
+
+ [[0 0 0]
+  [0 1 0]
+  [0 0 0]]]
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># collecting neighbours count for occupied lattice</span>
+<span class="n">occupied_lat_sten</span><span class="o">=</span><span class="n">occupied_lattice</span><span class="o">.</span><span class="n">apply_stencil</span><span class="p">(</span><span class="n">stencil</span><span class="p">)</span>
+
+<span class="n">facade_lattice</span><span class="o">=</span><span class="n">avail_lattice</span><span class="o">*</span><span class="mi">0</span>
+<span class="c1"># seperating the voxels with neighbours and excluding the occupied agents to retain only facade voxels</span>
+<span class="n">facade_lattice</span><span class="p">[</span><span class="n">occupied_lat_sten</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">facade_lattice</span><span class="p">[</span><span class="n">occupied_lattice</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="c1"># collecting center points of facade voxels</span>
+<span class="n">fcd_cens</span> <span class="o">=</span> <span class="n">facade_lattice</span><span class="o">.</span><span class="n">centroids_threshold</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># initiating the plotter</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
+
+<span class="c1"># fast visualization of the facade lattice</span>
+<span class="n">facade_lattice</span><span class="o">.</span><span class="n">fast_vis</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+<span class="c1"># fast visualization of the facade points</span>
+<span class="n">fcd_cens</span><span class="o">.</span><span class="n">fast_vis</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">tri_to_pv</span><span class="p">(</span><span class="n">agent_mesh</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#FAE31D&#39;</span><span class="p">)</span>
+
+<span class="c1"># plotting</span>
+<span class="n">p</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">use_ipyvtk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div id="9d485445-fd2f-4929-a763-2a3d6234f953"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#9d485445-fd2f-4929-a763-2a3d6234f953');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "fcc5f0d7274d4ea196b364285b71a69e", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+</div>
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>[(239.8279062084888, 147.3279062084888, 222.3279062084888),
+ (35.0, -57.5, 17.5),
+ (0.0, 0.0, 1.0)]</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="adding-context-mesh-to-the-agent-mesh">adding context mesh to the agent mesh</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># combining the surrounding building meshes with the agent meshes</span>
+<span class="n">context_mesh_complete</span><span class="o">=</span><span class="n">context_mesh</span><span class="o">+</span><span class="n">agent_mesh</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="putting-it-all-together-in-a-single-visualization">Putting it all together in a single visualization</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># initiating the plotter</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">notebook</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># adding the street grid points</span>
+<span class="n">street_g</span><span class="o">.</span><span class="n">fast_vis</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+<span class="c1"># facade voxels</span>
+<span class="n">facade_lattice</span><span class="o">.</span><span class="n">fast_vis</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+<span class="c1"># facade centroids</span>
+<span class="n">fcd_cens</span><span class="o">.</span><span class="n">fast_vis</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+<span class="c1"># (these aren&#39;t the centroids you&#39;re looking for)</span>
+<span class="c1"># not_fcd_cens.fast_vis(p)</span>
+
+<span class="c1"># adding the meshes</span>
+<span class="n">p</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">tri_to_pv</span><span class="p">(</span><span class="n">context_mesh_complete</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#aaaaaa&#39;</span><span class="p">)</span>
+
+<span class="c1"># plotting</span>
+<span class="n">p</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">use_ipyvtk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div id="ed32def4-c647-435b-9a12-4f2a74fe21e4"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#ed32def4-c647-435b-9a12-4f2a74fe21e4');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "3ad009bdf9fa483292081d1e9dfff978", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+</div>
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>[(785.8088446466429, 708.392439646643, 742.1697567966429),
+ (65.08283250000001, -12.333572500000002, 21.44374465),
+ (0.0, 0.0, 1.0)]</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="extracting-vector-between-facade-centroid-and-street-points">extracting vector between facade centroid and street points</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># Extracting the vector between the facade centroid and the street points. </span>
+<span class="n">ray_dir</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">run_count</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fcd_cens</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">street_g</span><span class="p">)):</span>
+        <span class="n">ray_dir1</span><span class="o">=</span><span class="n">street_g</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="o">-</span><span class="n">fcd_cens</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">ray_dir</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ray_dir1</span><span class="p">)</span>
+        <span class="n">run_count</span><span class="o">+=</span><span class="mi">1</span>
+<span class="n">ray_dir</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ray_dir</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">run_count</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>29541
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="sky_view-scrpit">sky_view scrpit</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># all the ray origins for each sky directions (vectorization format)</span>
+<span class="n">ray_srcs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">fcd_cens</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">street_g</span><span class="p">)])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># all the ray directions for each centroid</span>
+<span class="n">ray_dirs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">street_g</span><span class="p">,</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">fcd_cens</span><span class="p">),</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ray_dirs</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ray_srcs</span><span class="p">))</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>29541
+29541
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># computing the intersections of rays with the context mesh</span>
+<span class="n">tri_id</span><span class="p">,</span> <span class="n">ray_id</span> <span class="o">=</span> <span class="n">context_mesh_complete</span><span class="o">.</span><span class="n">ray</span><span class="o">.</span><span class="n">intersects_id</span><span class="p">(</span><span class="n">ray_origins</span><span class="o">=</span><span class="n">ray_srcs</span><span class="p">,</span> <span class="n">ray_directions</span><span class="o">=</span><span class="n">ray_dir</span><span class="p">,</span> <span class="n">multiple_hits</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="intersection-post-process">intersection post process</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># initialize the &#39;hits&#39; array with 0</span>
+<span class="n">hits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">ray_dirs</span><span class="p">))</span>
+<span class="c1"># rays that hit the context mesh are set to 1 and to floats</span>
+<span class="n">hits</span><span class="p">[</span><span class="n">ray_id</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">hits</span><span class="o">=</span><span class="n">hits</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># we collect only the rays that are unobstructed and we call them the good rays. </span>
+<span class="c1"># we collect the ID of the rays to use in restoring them back into the right location later</span>
+<span class="n">good_ray</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">good_ray_id</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hits</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">hits</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">good_ray</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ray_dir</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">good_ray_id</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="n">good_ray</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">good_ray</span><span class="p">)</span>
+<span class="n">good_ray_id</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">good_ray_id</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">good_ray</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">good_ray_id</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>[[-34. -77. -15.]
+ [-34. -57. -15.]
+ [-34.  33. -15.]
+ ...
+ [ 66.  68. -35.]
+ [ 76. -82. -35.]
+ [ 86. -92. -35.]]
+[   12    13    16 ... 29531 29532 29535]
+</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="scoring-the-streetview-rays">Scoring the streetview rays</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># we create a vector in the negatice z direction</span>
+<span class="n">z_n</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># we computer the sin(theta) of the fot product of the two vectors</span>
+<span class="c1"># we collect the ray length</span>
+<span class="c1"># we compute the contribution the length gives</span>
+
+<span class="n">sin_product</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">ray_len</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">length_contribution</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">good_ray</span><span class="p">)):</span>
+
+    <span class="n">ray_l</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">good_ray</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">ray_len</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ray_l</span><span class="p">)</span>
+
+    <span class="n">dot_prod</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">good_ray</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">ray_l</span><span class="p">,</span><span class="n">z_n</span><span class="p">)</span>
+    <span class="n">sin_prod</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">dot_prod</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">sin_product</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sin_prod</span><span class="p">)</span>
+
+    <span class="n">len_contr</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="o">-</span><span class="n">ray_l</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">40</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">length_contribution</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">len_contr</span><span class="p">)</span>
+
+<span class="n">sin_product</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sin_product</span><span class="p">)</span>
+<span class="n">ray_len</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ray_len</span><span class="p">)</span>
+<span class="n">length_contribution</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">length_contribution</span><span class="p">)</span>
+
+<span class="c1"># we then provide a score to each ray</span>
+<span class="n">total_score</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">sin_product</span><span class="o">*</span><span class="n">length_contribution</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="replacing-the-hit-information-with-the-scoring-information">replacing the hit information with the scoring information</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># we copy the hits and turn the values to 0, </span>
+<span class="c1"># we then replace where hits previously had 0 to the total_score of the ray and leave what used to be 1 as 0 </span>
+<span class="n">score_hits</span><span class="o">=</span><span class="n">hits</span><span class="o">*</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">good_ray_id</span><span class="p">)):</span>
+    <span class="n">score_hits</span><span class="p">[</span><span class="n">good_ray_id</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">=</span><span class="n">total_score</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="c1"># reshape the &#39;hits&#39; array to (len(facade centroids), len(directions))</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">score_hits</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fcd_cens</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># sum up all the scores per centroid</span>
+<span class="n">vox_score</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">score</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># normalize the results</span>
+<span class="n">vox_score_norm</span><span class="o">=</span><span class="p">(</span><span class="n">vox_score</span><span class="o">-</span><span class="n">vox_score</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">/</span><span class="p">(</span><span class="n">vox_score</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">vox_score</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># flatten the facade_lattice to retrieve the 1 dimensional lattice id</span>
+<span class="n">facade_lattice_flat</span><span class="o">=</span><span class="n">facade_lattice</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="c1"># replacing the values of 1 with the normalized score per centroid.</span>
+<span class="n">facade_lattice_flat</span><span class="o">=</span><span class="n">facade_lattice_flat</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">fcd_id</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">facade_lattice_flat</span><span class="o">==</span><span class="mi">1</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fcd_id</span><span class="p">)):</span>
+    <span class="n">facade_lattice_flat</span><span class="p">[</span><span class="n">fcd_id</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">=</span><span class="n">vox_score_norm</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># reshaping and converting to lattice</span>
+<span class="n">facade_streetview</span> <span class="o">=</span> <span class="n">facade_lattice_flat</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">facade_lattice</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">facade_streetview_lat</span><span class="o">=</span> <span class="n">tg</span><span class="o">.</span><span class="n">to_lattice</span><span class="p">(</span><span class="n">facade_streetview</span><span class="p">,</span> <span class="n">facade_lattice</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code><span class="c1"># initiating the plotter</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">Plotter</span><span class="p">(</span><span class="n">notebook</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">l</span> <span class="o">=</span> <span class="n">facade_streetview_lat</span>
+
+<span class="c1"># Create the spatial reference</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">pv</span><span class="o">.</span><span class="n">UniformGrid</span><span class="p">()</span>
+
+<span class="c1"># Set the grid dimensions: shape because we want to inject our values</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">dimensions</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">shape</span>
+<span class="c1"># The bottom left corner of the data set</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">origin</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">minbound</span>
+<span class="c1"># These are the cell sizes along each axis</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">spacing</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">unit</span>
+
+<span class="c1"># Add the data values to the cell data</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">point_arrays</span><span class="p">[</span><span class="s2">&quot;Sreet visibilw points&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">)</span>  <span class="c1"># Flatten the Lattice</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">tri_to_pv</span><span class="p">(</span><span class="n">agent_mesh</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#aaaaaa&#39;</span><span class="p">)</span>
+
+<span class="n">street_g</span><span class="o">.</span><span class="n">fast_vis</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+<span class="c1"># adding the boundingbox wireframe</span>
+<span class="n">p</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">outline</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Domain&quot;</span><span class="p">)</span>
+
+<span class="c1"># adding the volume</span>
+<span class="n">opacity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.6</span><span class="p">])</span><span class="o">*</span><span class="mf">1.5</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">add_volume</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span><span class="n">opacity</span><span class="o">=</span><span class="n">opacity</span><span class="p">,</span> <span class="n">shade</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># plotting</span>
+<span class="n">p</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">use_ipyvtk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div id="6c3f31e6-17d9-46ab-bbc6-552546ab60a5"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#6c3f31e6-17d9-46ab-bbc6-552546ab60a5');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "a02328ceb9284c50b6721f901391396b", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+</div>
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>[(436.5752914075283, 363.5752914075283, 429.3252914075283),
+ (26.0, -47.0, 18.75),
+ (0.0, 0.0, 1.0)]</code>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+
+<div class="codehilite"><pre><span></span><code>
+</code></pre></div>
+
+
+
+</div>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../4_agent_growth/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Growing the agents" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Growing the agents
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../5_poligonization/" class="md-footer__link md-footer__link--next" aria-label="Next: Polygonize" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Polygonize
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>
