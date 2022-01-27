@@ -51,13 +51,13 @@ The third aspect of the configuring phase was the creation of a flowchart that e
 
 ## Determining voxelsize
 
-The configuring phase was also the moment to design voxel size. The starting point is to look at the Dutch building code guidelines. Because of the goal of an inclusive city people using wheel chairs should have full range of the entire building as such te minimum corridor width as stated in "Menselijke maat" should be 90 cm.
+The configuring phase was also the moment to design voxel size. The starting point is to look at the Dutch building code guidelines. Because of the goal of an inclusive city people using wheel chairs should have full range of the entire building as such te minimum corridor width as stated in "Menselijke maat" should be 90 cm. That was applied to the width of the corridor.
 
-corridors
+The stairways were used to define the height.
 
-stairs
+![](./img/a4_4.1.png)
 
-final approach
+*stairway*
 
 
 
@@ -65,18 +65,18 @@ final approach
 
 The final part of the configuring process is using the determined voxelsize to to create two lattices based on the compulsory envelope.
 
-<img src='/img/voxelization_highres1.png' alt="collective" style="width:280px;height:300px;">
+![](./img/voxelization_highres1.png)
 
 *compulsory envelope*
 
 The high resolution lattice will mainly be used for general field creation and polygonization in A3 and A4. 
 the low resolution lattice was created with the intent of lowering the calculation impact of more intens calculation wise notebooks this aspect is further discussed in A3. After the caculations the results will be interpolated with the intent of creating comparable lattices with the high resolution. 
 
-<img src='/img/voxelization_highres2.png' alt="collective" style="width:280px;height:300px;">
+![](./img/voxelization_highres2.png)
 
 *voxelized envelope highres*
 
-<img src='/img/voxelization_lowres2.png' alt="collective" style="width:280px;height:300px;">
+![](./img/voxelization_lowres2.png)
 
 *voxelized envelope lowress*
 

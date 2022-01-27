@@ -2,7 +2,7 @@
 [download link](https://drive.google.com/file/d/1w8PYGFq6ROJiACiTrqoWNbI8cmh9_v82/view?usp=sharing)
 
 # Final poster
-[Download & view link]()
+[Download & view link](https://drive.google.com/file/d/1HNJ9hI_5AGquOCaR2Mp6Oj9A_YWyWvbz/view?usp=sharing)
 
 # Midterm presentation
 [Download & view link](https://docs.google.com/presentation/d/1Gh5YgoIp-o6_0YZbN8DKarngIz_R51M4/edit?usp=sharing&ouid=113721166153229815362&rtpof=true&sd=true)
