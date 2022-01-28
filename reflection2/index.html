@@ -23,6 +23,10 @@
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
         
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
       
     
     
@@ -56,7 +60,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="">
   
     
     <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
@@ -943,6 +947,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#reflection-agenth-growth" class="md-nav__link">
+    Reflection agenth growth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#comparison" class="md-nav__link">
     Comparison
   </a>
@@ -1027,6 +1038,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#reflection-agenth-growth" class="md-nav__link">
+    Reflection agenth growth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#comparison" class="md-nav__link">
     Comparison
   </a>
@@ -1079,6 +1097,17 @@ Noise approval
 <p>Could be added in the future. We didn't experiment with any of the other envelope sizes it would have been intresting to make the building taller for example.</p>
 <h2 id="polygonization-improvements">Polygonization improvements</h2>
 <p>The main improvements towards polygonization that were not made due to time constraints were the creation of more tile sets per agent group or individual. In the final no doors or shopping windows are present thus giving the building a very generated feeling.</p>
+<h2 id="reflection-agenth-growth">Reflection agenth growth</h2>
+<p>It has come to our attention that not all our behaviors act consistently yet. 
+First of all the Squareness behavior does work, in all test it has performed as expected, This will be visible in the below Gifs. 
+Second is eating and abandoning voxels. This works as well to an extent, it seems to stop at a local maximum which is what is desired.
+Third is agent connectiveness. This is the behavior that is most inconsistent. It sometimes works and it sometimes doesn’t.  We speculate that the weight connectiveness is being outweighed by other fields. Connectiveness is one of the most important behavior’s for creating a well made suited configuration and this fix should be of strong priority. 
+And lastly building depth works as written. However it is not the end result we desire as it focuses on the depth of every agent and not the depth of the building as a whole. There are benefits if the current building depth and that is L shapes are allowed  and it doesn’t unnecessarily make for a porous result as in the other building depth that has been used and that can be found in Cub3d. Effort should be made to find a common ground between the building depth of Cub3d (and of 8-bit, an adjacent group work) and to attempt to implement our building depth but on the building level and not only agent level.</p>
+<p><img alt="Voxelization Flowchart" src="../img/agent_connectivity_fail.gif" /></p>
+<p><img alt="Voxelization Flowchart" src="../img/building_depth.png" /></p>
+<p><img alt="Voxelization Flowchart" src="../img/eating_and_abandoning.gif" /></p>
+<p><img alt="Voxelization Flowchart" src="../img/agent_connectivity.gif" /></p>
+<p><img alt="Legend_agent_growth" src="../img/legend%20%281%29.png" /></p>
 <h2 id="comparison">Comparison</h2>
 <p>A partial goal of the minor is to improve upon previous versions. this is done through the exploration of personal intrests of group members.</p>
 <p>There have been previous groups and projects that had buildingcode correct corridors throughout the building on each floor. They kept fire safety and ease of use more in mind. It is however unclear if the corridors were placed manualy. Implementing or looking into this would have led to a better building in our opinion.</p>

@@ -23,6 +23,10 @@
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
         
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
       
     
     
@@ -56,7 +60,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="">
   
     
     <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
@@ -352,6 +356,89 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fields" class="md-nav__link">
+    Fields
+  </a>
+  
+    <nav class="md-nav" aria-label="Fields">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#voxelization" class="md-nav__link">
+    Voxelization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#street-distance" class="md-nav__link">
+    Street Distance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#street-point-creation" class="md-nav__link">
+    Street Point Creation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#football-field-distance" class="md-nav__link">
+    Football Field Distance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loudness-noise" class="md-nav__link">
+    Loudness/ Noise
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#penthouse-factor" class="md-nav__link">
+    Penthouse Factor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sun-access" class="md-nav__link">
+    Sun access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shadow-blocking" class="md-nav__link">
+    Shadow blocking
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shadowing" class="md-nav__link">
+    Shadowing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skyview-factor" class="md-nav__link">
+    Skyview factor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#behaviour" class="md-nav__link">
@@ -1005,6 +1092,89 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#fields" class="md-nav__link">
+    Fields
+  </a>
+  
+    <nav class="md-nav" aria-label="Fields">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#voxelization" class="md-nav__link">
+    Voxelization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#street-distance" class="md-nav__link">
+    Street Distance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#street-point-creation" class="md-nav__link">
+    Street Point Creation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#football-field-distance" class="md-nav__link">
+    Football Field Distance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loudness-noise" class="md-nav__link">
+    Loudness/ Noise
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#penthouse-factor" class="md-nav__link">
+    Penthouse Factor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sun-access" class="md-nav__link">
+    Sun access
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shadow-blocking" class="md-nav__link">
+    Shadow blocking
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shadowing" class="md-nav__link">
+    Shadowing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skyview-factor" class="md-nav__link">
+    Skyview factor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#behaviour" class="md-nav__link">
     Behaviour
   </a>
@@ -1073,7 +1243,153 @@
                 
                 
                 <h1 id="process">Process</h1>
+<p>In A2 Configuration we have established the meaningful desired relationships and preference that serve as the instructions for putting the building together. In Massing this information gets merged together with different methodologies for facilitating said relationships and preference. The method used in this minor is agent based modelling. The term agent has been used in A2 configuration. Agent based modeling uses “agents” that represent a particular function of the building, in our case we have 19 agents, these agents then grow based on predetermined specifications (A2 Configuration) and local changes into something usable, or at least that is the attempt  in our case (see reflections for more). The first step in massing is creating data fields that store values corresponding to preferences, these fields allow for the local changes to be meaningful in terms of our preference. The next step is implementing behaviors for the agents to use when they grow, to help dictate how they treat their own occupied voxels and other agent occupied voxels. At the end of Massing we discuss a dynamic field Street Sight.</p>
+<h2 id="fields">Fields</h2>
+<h3 id="voxelization">Voxelization</h3>
+<p>The first field was the creation of the voxels based on envelope and the voxelsize determined in <a href="https://demnity.github.io/spatial_computing/a2_process/">A2 Configuring</a>. The corresponding flowchart shows that the field starts with compulsory envelope. As stated before in the configuring two voxel lattices have been constructed with both the high and low resoltion.</p>
+<p><img alt="Voxelization Flowchart" src="../img/a4_b.jpg" /></p>
+<h3 id="street-distance">Street Distance</h3>
+<p>The second field is the calculation of street distance. The input of which is the voxelized envelope. It then creates and calculates points </p>
+<p><img alt="Street Distance Flowchart" src="../img/a4_a.jpg" /></p>
+<p><img alt="Street Distance gif" src="../img/Afbeelding2.gif" /></p>
+<h3 id="street-point-creation">Street Point Creation</h3>
+<p>The third field is the street point creation.</p>
+<p><img alt="Street Point Flowchart" src="../img/a4_c.jpg" /></p>
+<table><thead><tr class="header"><th>Street Point Creation</th><th></th></tr></thead><tbody><tr class="odd"><td>Input</td><td>streetpoint, compulsory envelope, immediate context and voxelized Envelope</td></tr><tr class="even"><td>Output</td><td><p>Street Point Creation field</p></td></tr>
+<tr class="odd"><td>Code</td><td>
+<pre>
+1 > Create street points (from previous slide)
+
+2 > Find voxels closest to the street points (normally the ground façade voxels)
+
+3 > Set those voxel values to 0 and the rest to infinity
+
+4 > Use breath first search traversal to find the distance of the rest of the voxels to the voxels closest to the street points
+</pre>
+</td></tr></tbody></table>
+
+<h3 id="football-field-distance">Football Field Distance</h3>
+<p>The fourth field is the football field distance.</p>
+<p><img alt="Football Field Distance Flowchart" src="../img/a4_d.jpg" /></p>
+<p><img alt="Football Field Distance gif" src="../img/Afbeelding4.gif" /></p>
+<table><thead><tr class="header"><th>Pseudocode</th><th></th></tr></thead><tbody><tr class="odd"><td>Input</td><td></td>streetpoint, compulsory envelope, immediate context and voxelized Envelope</tr><tr class="even"><td>Output</td><td><p>Football Field Distance field</p></td></tr>
+<tr class="odd"><td>Code</td><td>
+<pre>
+1 > Create football field points
+
+2 > Use the same idea as in street distance
+
+3 > Normalize
+</pre>
+</td></tr></tbody></table>
+
+<h3 id="loudness-noise">Loudness/ Noise</h3>
+<p>The fifth field is the loudness.</p>
+<p><img alt="Loudness/ Noise Flowchart" src="../img/a4_e.jpg" /></p>
+<p><img alt="Loudness/ Noise gif" src="../img/Afbeelding3.gif" /></p>
+<table><thead><tr class="header"><th>Pseudocode</th><th></th></tr></thead><tbody><tr class="odd"><td>Input</td><td>streetpoint, compulsory envelope, immediate context and voxelized Envelope</td></tr><tr class="even"><td>Output</td><td><p>Loudness/ Noise field</p></td></tr>
+<tr class="odd"><td>Code</td><td>
+<pre>
+1 > Create street points (from previous slide)
+
+2 > Create football field noise
+
+3 > Calculate the distance from each voxel to every noise points
+
+4 > Normalize
+</pre>
+</td></tr></tbody></table>
+
+<h3 id="penthouse-factor">Penthouse Factor</h3>
+<p>The sixth field is the penthouse factor.</p>
+<p><img alt="Penthouse Factor Flowchart" src="../img/a4_f.jpg" /></p>
+<p><img alt="Penthouse Factor gif" src="../img/Afbeelding5.gif" /></p>
+<table><thead><tr class="header"><th>Pseudocode</th><th></th></tr></thead><tbody><tr class="odd"><td>Input</td><td>streetpoint, compulsory envelope, immediate context and voxelized Envelope</td></tr><tr class="even"><td>Output</td><td><p>Penthouse Factor field</p></td></tr>
+<tr class="odd"><td>Code</td><td>
+<pre>
+1 > Extract each voxel centroids in the form of (x, y, z)
+
+2 > Set the voxel values to their corresponding z values
+
+3 > Normalize
+</pre>
+</td></tr></tbody></table>
+
+<h3 id="sun-access">Sun access</h3>
+<p>The seventh field is the sun access.</p>
+<p><img alt="Sun access Flowchart" src="../img/a4_h.jpg" /></p>
+<p><img alt="Sun access gif" src="../img/Afbeelding6.gif" /></p>
+<table><thead><tr class="header"><th>Pseudocode</th><th></th></tr></thead><tbody><tr class="odd"><td>Input</td><td>streetpoint, compulsory envelope, immediate context and voxelized Envelope</td></tr><tr class="even"><td>Output</td><td><p>Sun access field</p></td></tr>
+<tr class="odd"><td>Code</td><td>
+<pre>
+1 > Find out sun directions every 90 days 
+
+2 > Accumulate the sun directions
+
+3 > Do an intersection test from each voxel in the direction of the sun
+
+4 > Use the result of the intersection to calculate the percentage of rays not hitting the context mesh (getting the rays that can see the sun)
+
+5 > Store the percentages as field values
+</pre>
+</td></tr></tbody></table>
+
+<h3 id="shadow-blocking">Shadow blocking</h3>
+<p>The eight field is the shadow blocking.</p>
+<p><img alt="Shadow blocking Flowchart" src="../img/a4_i.jpg" /></p>
+<p><img alt="Shadow blocking gif" src="../img/Afbeelding7.gif" /></p>
+<table><thead><tr class="header"><th>Pseudocode</th><th></th></tr></thead><tbody><tr class="odd"><td>Input</td><td>streetpoint, compulsory envelope, immediate context and voxelized Envelope</td></tr><tr class="even"><td>Output</td><td><p>Shadow blocking field</p></td></tr>
+<tr class="odd"><td>Code</td><td>
+<pre>
+1 > Find out sun directions every 90 days 
+
+2 > Accumulate the sun directions
+
+3 > Do an intersection test from each voxel in the inverse direction of the sun
+
+4 > Use the result of the intersection to calculate the percentage of rays not hitting the context mesh (getting the rays that can see the sun)
+
+5 > Store the percentages as field values
+</pre>
+</td></tr></tbody></table>
+
+<h3 id="shadowing">Shadowing</h3>
+<p>The ninth field is the shadowing.</p>
+<p><img alt="Shadowing Flowchart" src="../img/a4_j.jpg" /></p>
+<p><img alt="Shadowing gif" src="../img/Afbeelding9.gif" /></p>
+<table><thead><tr class="header"><th>Pseudocode</th><th></th></tr></thead><tbody><tr class="odd"><td>Input</td><td>streetpoint, compulsory envelope, immediate context and voxelized Envelope</td></tr><tr class="even"><td>Output</td><td><p>Usable lattice</p></td></tr>
+<tr class="odd"><td>Code</td><td>
+<pre>
+1 > Import shadowing field calculated before as a lattice
+
+2 > Define a threshold
+
+3 > If shadow value > threshold: 
+         Set voxel to False
+     Else: 
+         Set voxel to True
+</pre>
+</td></tr></tbody></table>
+
+<h3 id="skyview-factor">Skyview factor</h3>
+<p>The tenth field is the skyview factor.</p>
+<p><img alt="Skyview factor Flowchart" src="../img/a4_k.jpg" /></p>
+<p><img alt="Skyview factor gif" src="../img/Afbeelding8.gif" /></p>
+<table><thead><tr class="header"><th>Pseudocode</th><th></th></tr></thead><tbody><tr class="odd"><td>Input</td><td>streetpoint, compulsory envelope, immediate context and voxelized Envelope</td></tr><tr class="even"><td>Output</td><td><p>Change value priority of the free neighbours</p></td></tr>
+<tr class="odd"><td>Code</td><td>
+<pre>
+1 > Create a hemispherical point cloud that would surround the envelope
+
+2 > Trace rays from each voxel to the direction of the sky points (we assume the sky points are directions themselves)
+
+3 > Use the result of the intersection to calculate the percentage of rays not hitting the context mesh (getting the rays that can see the sky)
+
+4 > Store those results as voxel values
+</pre>
+</td></tr></tbody></table>
+
 <h2 id="behaviour">Behaviour</h2>
+<p>This project has 4 behaviors: squareness, agent connectiveness, eating and abandoning voxels, building depth. Squareness is a behavior that aids in growing a suitable configuration for buildings as a lot of what we are familiar with In architecture has a squareness to it, this directly helps with A4 Forming. Agent connectiveness encourages the agents to seek one another based in predetermined relationships in A2 Configuration, this is a key element in the process as otherwise the configuration generated by the agents would depend only on field preferences. Eating and abandoning voxels allow for an agent to grow towards an available local best while remaining within its predetermined size constraint. And finally building depth, or as it currently is, max agent depth. Building depth aims to restrict the growth in a pattern that allows for reasonable day light into the building. The behavior itself prevents agents from growing too thick but does not prevent them from growing in an L form. This is an alternative approach to what has been done before for building depth. Per behavior we will link a reflection that we wrote on how well the behavior compares to the desired outcome.</p>
 <h4 id="squareness">Squareness</h4>
 <p>This behaviour takes a weight in range <strong>[0, 1] </strong>, representing how rectangular the shape the agent would grow into is.</p>
 <p><img alt="Squareness" src="../img/squareness.jpg" />
@@ -1167,6 +1483,8 @@
 </pre>
 </td></tr></tbody></table>
 
+<p>Reflection on the behaviour building depth at:</p>
+<p><a href="https://demnity.github.io/spatial_computing/reflection/">Reflections</a></p>
 <h4 id="building-height">Building height</h4>
 <p>The behaviour limits the building height, not allowing it grow further than the predefined maximum height. Works better in conjunction with squareness. Has the same idea as building depth.</p>
 <table><thead><tr class="header"><th>Pseudocode</th><th></th></tr></thead><tbody><tr class="odd"><td>Input</td><td>Current agent locations</td></tr><tr class="even"><td>Output</td><td><p>Remove the neighbours that make the agent exceed the max height</p></td></tr>
@@ -1324,6 +1642,9 @@ Figure 2</p>
 <p><img alt="Test run 1" src="../img/street_view1.gif" /></p>
 <p><img alt="Test run 2" src="../img/street_view2.gif" /></p>
 <p><img alt="Lattice with scores" src="../img/street_view3.gif" /></p>
+<p><img alt="Legend" src="../img/32948.jpg" /></p>
+<p>Reflection on the behaviours:</p>
+<p><a href="https://demnity.github.io/spatial_computing/reflection/">Reflections</a></p>
                 
               
               
