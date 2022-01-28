@@ -53,7 +53,7 @@ The third aspect of the configuring phase was the creation of a flowchart that e
 
 The configuring phase was also the moment to design voxel size. The starting point is to look at the Dutch building code guidelines. Because of the goal of an inclusive city people using wheel chairs should have full range of the entire building as such te minimum corridor width as stated in "Menselijke maat" should be 90 cm. That was applied to the width of the corridor.
 
-The stairways were used to define the height.
+The stairways were used to define the height. the final voxelsize was divided between a high resolution of 1.4 by 1.4 by 3.2. and a lower resolution which corresponds with 27 times the size of the high res voxel at 4.2 by 4.2 by 9.6. more about vocel size in [A4 Forming](https://demnity.github.io/spatial_computing/a4_forming/a4_forming_proces/).
 
 ![](./img/a4_4.1.png)
 

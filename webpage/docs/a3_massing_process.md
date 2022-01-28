@@ -1,6 +1,195 @@
 # Process
 
+In A2 Configuration we have established the meaningful desired relationships and preference that serve as the instructions for putting the building together. In Massing this information gets merged together with different methodologies for facilitating said relationships and preference. The method used in this minor is agent based modelling. The term agent has been used in A2 configuration. Agent based modeling uses “agents” that represent a particular function of the building, in our case we have 19 agents, these agents then grow based on predetermined specifications (A2 Configuration) and local changes into something usable, or at least that is the attempt  in our case (see reflections for more). The first step in massing is creating data fields that store values corresponding to preferences, these fields allow for the local changes to be meaningful in terms of our preference. The next step is implementing behaviors for the agents to use when they grow, to help dictate how they treat their own occupied voxels and other agent occupied voxels. At the end of Massing we discuss a dynamic field Street Sight.
+
+## Fields
+
+### Voxelization
+
+The first field was the creation of the voxels based on envelope and the voxelsize determined in [A2 Configuring](https://demnity.github.io/spatial_computing/a2_process/). The corresponding flowchart shows that the field starts with compulsory envelope. As stated before in the configuring two voxel lattices have been constructed with both the high and low resoltion.
+
+![Voxelization Flowchart](./img/a4_b.jpg)
+
+### Street Distance
+
+The second field is the calculation of street distance. The input of which is the voxelized envelope. It then creates and calculates points 
+
+![Street Distance Flowchart](./img/a4_a.jpg)
+
+![Street Distance gif](./img/Afbeelding2.gif)
+
+### Street Point Creation
+
+The third field is the street point creation.
+
+![Street Point Flowchart](./img/a4_c.jpg)
+
+<table><thead><tr class="header"><th>Street Point Creation</th><th></th></tr></thead><tbody><tr class="odd"><td>Input</td><td>streetpoint, compulsory envelope, immediate context and voxelized Envelope</td></tr><tr class="even"><td>Output</td><td><p>Street Point Creation field</p></td></tr>
+<tr class="odd"><td>Code</td><td>
+<pre>
+1 > Create street points (from previous slide)
+
+2 > Find voxels closest to the street points (normally the ground façade voxels)
+
+3 > Set those voxel values to 0 and the rest to infinity
+
+4 > Use breath first search traversal to find the distance of the rest of the voxels to the voxels closest to the street points
+</pre>
+</td></tr></tbody></table>
+
+### Football Field Distance
+
+The fourth field is the football field distance.
+
+![Football Field Distance Flowchart](./img/a4_d.jpg)
+
+![Football Field Distance gif](./img/Afbeelding4.gif)
+
+<table><thead><tr class="header"><th>Pseudocode</th><th></th></tr></thead><tbody><tr class="odd"><td>Input</td><td></td>streetpoint, compulsory envelope, immediate context and voxelized Envelope</tr><tr class="even"><td>Output</td><td><p>Football Field Distance field</p></td></tr>
+<tr class="odd"><td>Code</td><td>
+<pre>
+1 > Create football field points
+
+2 > Use the same idea as in street distance
+
+3 > Normalize
+</pre>
+</td></tr></tbody></table>
+
+### Loudness/ Noise
+
+The fifth field is the loudness.
+
+![Loudness/ Noise Flowchart](./img/a4_e.jpg)
+
+![Loudness/ Noise gif](./img/Afbeelding3.gif)
+
+<table><thead><tr class="header"><th>Pseudocode</th><th></th></tr></thead><tbody><tr class="odd"><td>Input</td><td>streetpoint, compulsory envelope, immediate context and voxelized Envelope</td></tr><tr class="even"><td>Output</td><td><p>Loudness/ Noise field</p></td></tr>
+<tr class="odd"><td>Code</td><td>
+<pre>
+1 > Create street points (from previous slide)
+
+2 > Create football field noise
+
+3 > Calculate the distance from each voxel to every noise points
+
+4 > Normalize
+</pre>
+</td></tr></tbody></table>
+
+### Penthouse Factor
+
+The sixth field is the penthouse factor.
+
+![Penthouse Factor Flowchart](./img/a4_f.jpg)
+
+![Penthouse Factor gif](./img/Afbeelding5.gif)
+
+<table><thead><tr class="header"><th>Pseudocode</th><th></th></tr></thead><tbody><tr class="odd"><td>Input</td><td>streetpoint, compulsory envelope, immediate context and voxelized Envelope</td></tr><tr class="even"><td>Output</td><td><p>Penthouse Factor field</p></td></tr>
+<tr class="odd"><td>Code</td><td>
+<pre>
+1 > Extract each voxel centroids in the form of (x, y, z)
+
+2 > Set the voxel values to their corresponding z values
+
+3 > Normalize
+</pre>
+</td></tr></tbody></table>
+
+### Sun access
+
+The seventh field is the sun access.
+
+![Sun access Flowchart](./img/a4_h.jpg)
+
+![Sun access gif](./img/Afbeelding6.gif)
+
+<table><thead><tr class="header"><th>Pseudocode</th><th></th></tr></thead><tbody><tr class="odd"><td>Input</td><td>streetpoint, compulsory envelope, immediate context and voxelized Envelope</td></tr><tr class="even"><td>Output</td><td><p>Sun access field</p></td></tr>
+<tr class="odd"><td>Code</td><td>
+<pre>
+1 > Find out sun directions every 90 days 
+
+2 > Accumulate the sun directions
+
+3 > Do an intersection test from each voxel in the direction of the sun
+
+4 > Use the result of the intersection to calculate the percentage of rays not hitting the context mesh (getting the rays that can see the sun)
+
+5 > Store the percentages as field values
+</pre>
+</td></tr></tbody></table>
+
+### Shadow blocking
+
+The eight field is the shadow blocking.
+
+![Shadow blocking Flowchart](./img/a4_i.jpg)
+
+![Shadow blocking gif](./img/Afbeelding7.gif)
+
+<table><thead><tr class="header"><th>Pseudocode</th><th></th></tr></thead><tbody><tr class="odd"><td>Input</td><td>streetpoint, compulsory envelope, immediate context and voxelized Envelope</td></tr><tr class="even"><td>Output</td><td><p>Shadow blocking field</p></td></tr>
+<tr class="odd"><td>Code</td><td>
+<pre>
+1 > Find out sun directions every 90 days 
+
+2 > Accumulate the sun directions
+
+3 > Do an intersection test from each voxel in the inverse direction of the sun
+
+4 > Use the result of the intersection to calculate the percentage of rays not hitting the context mesh (getting the rays that can see the sun)
+
+5 > Store the percentages as field values
+</pre>
+</td></tr></tbody></table>
+
+### Shadowing
+
+The ninth field is the shadowing.
+
+![Shadowing Flowchart](./img/a4_j.jpg)
+
+
+![Shadowing gif](./img/Afbeelding9.gif)
+
+<table><thead><tr class="header"><th>Pseudocode</th><th></th></tr></thead><tbody><tr class="odd"><td>Input</td><td>streetpoint, compulsory envelope, immediate context and voxelized Envelope</td></tr><tr class="even"><td>Output</td><td><p>Usable lattice</p></td></tr>
+<tr class="odd"><td>Code</td><td>
+<pre>
+1 > Import shadowing field calculated before as a lattice
+
+2 > Define a threshold
+
+3 > If shadow value > threshold: 
+         Set voxel to False
+     Else: 
+         Set voxel to True
+</pre>
+</td></tr></tbody></table>
+
+### Skyview factor
+
+The tenth field is the skyview factor.
+
+![Skyview factor Flowchart](./img/a4_k.jpg)
+
+![Skyview factor gif](./img/Afbeelding8.gif)
+
+<table><thead><tr class="header"><th>Pseudocode</th><th></th></tr></thead><tbody><tr class="odd"><td>Input</td><td>streetpoint, compulsory envelope, immediate context and voxelized Envelope</td></tr><tr class="even"><td>Output</td><td><p>Change value priority of the free neighbours</p></td></tr>
+<tr class="odd"><td>Code</td><td>
+<pre>
+1 > Create a hemispherical point cloud that would surround the envelope
+
+2 > Trace rays from each voxel to the direction of the sky points (we assume the sky points are directions themselves)
+
+3 > Use the result of the intersection to calculate the percentage of rays not hitting the context mesh (getting the rays that can see the sky)
+
+4 > Store those results as voxel values
+</pre>
+</td></tr></tbody></table>
+
 ## Behaviour
+
+This project has 4 behaviors: squareness, agent connectiveness, eating and abandoning voxels, building depth. Squareness is a behavior that aids in growing a suitable configuration for buildings as a lot of what we are familiar with In architecture has a squareness to it, this directly helps with A4 Forming. Agent connectiveness encourages the agents to seek one another based in predetermined relationships in A2 Configuration, this is a key element in the process as otherwise the configuration generated by the agents would depend only on field preferences. Eating and abandoning voxels allow for an agent to grow towards an available local best while remaining within its predetermined size constraint. And finally building depth, or as it currently is, max agent depth. Building depth aims to restrict the growth in a pattern that allows for reasonable day light into the building. The behavior itself prevents agents from growing too thick but does not prevent them from growing in an L form. This is an alternative approach to what has been done before for building depth. Per behavior we will link a reflection that we wrote on how well the behavior compares to the desired outcome.
+
 #### Squareness
 This behaviour takes a weight in range <strong>[0, 1] </strong>, representing how rectangular the shape the agent would grow into is.
 
@@ -97,6 +286,10 @@ The behaviour limits the building depth, not allowing it grow further than the p
 </pre>
 </td></tr></tbody></table>
 
+Reflection on the behaviour building depth at:
+
+[Reflections](https://demnity.github.io/spatial_computing/reflection/)
+
 #### Building height
 The behaviour limits the building height, not allowing it grow further than the predefined maximum height. Works better in conjunction with squareness. Has the same idea as building depth.
 
@@ -123,6 +316,8 @@ The behaviour limits the building height, not allowing it grow further than the 
             Use it normally
 </pre>
 </td></tr></tbody></table>
+
+
 
 ## Street Sight ##
 
@@ -273,3 +468,9 @@ When writing and testing the script the intersection tests were taking a few min
 ![Test run 2](./img/street_view2.gif)
 
 ![Lattice with scores](./img/street_view3.gif)
+
+![Legend](./img/32948.jpg)
+
+Reflection on the behaviours:
+
+[Reflections](https://demnity.github.io/spatial_computing/reflection/)

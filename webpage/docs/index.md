@@ -32,4 +32,4 @@ Reflectionist:
 
 ## Website Reading Guide
 
-This project repository is a demonstration of our operational workflow, in which we will show [A1 Planning]() the [A2 Configuring](), the [A3 Massing](), the [A4 Forming]() and the [Final Result]() of our building.
+This project repository is a demonstration of our operational workflow, in which we will show [A1 Planning](https://demnity.github.io/spatial_computing/a1_process/) the [A2 Configuring](https://demnity.github.io/spatial_computing/a2_process/), the [A3 Massing](https://demnity.github.io/spatial_computing/a3_massing_process/), the [A4 Forming](https://demnity.github.io/spatial_computing/a4_forming/a4_forming_proces/) and the [Reflections](https://demnity.github.io/spatial_computing/reflection/) of our building.

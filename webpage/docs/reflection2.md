@@ -45,6 +45,24 @@ Could be added in the future. We didn't experiment with any of the other envelop
 
 The main improvements towards polygonization that were not made due to time constraints were the creation of more tile sets per agent group or individual. In the final no doors or shopping windows are present thus giving the building a very generated feeling.
 
+## Reflection agenth growth
+
+It has come to our attention that not all our behaviors act consistently yet. 
+First of all the Squareness behavior does work, in all test it has performed as expected, This will be visible in the below Gifs. 
+Second is eating and abandoning voxels. This works as well to an extent, it seems to stop at a local maximum which is what is desired.
+Third is agent connectiveness. This is the behavior that is most inconsistent. It sometimes works and it sometimes doesn’t.  We speculate that the weight connectiveness is being outweighed by other fields. Connectiveness is one of the most important behavior’s for creating a well made suited configuration and this fix should be of strong priority. 
+And lastly building depth works as written. However it is not the end result we desire as it focuses on the depth of every agent and not the depth of the building as a whole. There are benefits if the current building depth and that is L shapes are allowed  and it doesn’t unnecessarily make for a porous result as in the other building depth that has been used and that can be found in Cub3d. Effort should be made to find a common ground between the building depth of Cub3d (and of 8-bit, an adjacent group work) and to attempt to implement our building depth but on the building level and not only agent level.
+
+![Voxelization Flowchart](./img/agent_connectivity_fail.gif)
+
+![Voxelization Flowchart](./img/building_depth.png)
+
+![Voxelization Flowchart](./img/eating_and_abandoning.gif)
+
+![Voxelization Flowchart](./img/agent_connectivity.gif)
+
+![Legend_agent_growth](./img/legend (1).png)
+
 ## Comparison
 
 A partial goal of the minor is to improve upon previous versions. this is done through the exploration of personal intrests of group members.
