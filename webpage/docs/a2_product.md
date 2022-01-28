@@ -5,16 +5,16 @@
 
 *Adjacency Matrix*
 
-<img src='/img/adjacency_matrix_chart.jpg' alt="collective" style="width:1500px;height:1000px;">
+![](./img/adjacency_matrix_chart.jpg)
 
 *Importance of Relationship*
 
-<img src='/img/adjacency_matrix_chart.jpg' alt="collective" style="width:1500px;height:1000px;">
+![](./img/adjacency_matrix_chart.jpg)
 
 *voxelized envelope lowress*
 
-<img src='/img/voxelization_lowres2.png' alt="collective" style="width:1500px;height:1000px;">
+![](./img/voxelization_lowres2.png)
 
 *voxelized envelope highres*
 
-<img src='/img/voxelization_highres2.png' alt="collective" style="width:1500px;height:1000px;">
+![](./img/voxelization_highres2.png)
