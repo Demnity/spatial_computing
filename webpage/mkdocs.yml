@@ -42,6 +42,10 @@ nav:
       - Group Reflections: "reflection.md"
       - Project Reflections: "reflection2.md" 
 theme:
+  # logo: img/logo.png
+  palette:
+    primary: red
+    accents: deep orange
   name: "material"
 
 markdown_extensions:
