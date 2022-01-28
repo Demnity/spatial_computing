@@ -5,11 +5,7 @@
 
 *Adjacency Matrix*
 
-![](./img/adjacency_matrix_chart.jpg)
-
-*Importance of Relationship*
-
-![](./img/adjacency_matrix_chart.jpg)
+![](./img/Adjacency_matrix_chart.jpg)
 
 *voxelized envelope lowress*
 
